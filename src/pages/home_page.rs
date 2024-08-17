@@ -6,7 +6,7 @@ pub fn HomePage() -> impl IntoView {
             <section class="py-20">
                 <div class="flex flex-wrap md:flex-nowrap p-5">
                     <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-                        <img alt="Menu Link Image" class="object-fill" src="assets/img/meniu.png" />
+                        <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.png" />
                     </div>
                     <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                         <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Discover our menu</h2>
@@ -25,7 +25,7 @@ pub fn HomePage() -> impl IntoView {
             <section class="py-20">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                     <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                        <img class="h-64 m-5" src="assets/img/rezervari.png" />
+                        <img class="h-64 m-5" src="assets/img/rezervation.png" />
                         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Events</h2>
                         <div class="px-20 text-center">
                             <p>
@@ -34,7 +34,7 @@ pub fn HomePage() -> impl IntoView {
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                        <img class="h-64 m-5" src="assets/img/rezervari.png" />
+                        <img class="h-64 m-5" src="assets/img/rezervation.png" />
                         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">About us</h2>
                         <div class="px-20 text-center">
                             <p>
@@ -43,7 +43,7 @@ pub fn HomePage() -> impl IntoView {
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                        <img class="h-64 m-5" src="assets/img/rezervari.png" />
+                        <img class="h-64 m-5" src="assets/img/rezervation.png" />
                         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Specials</h2>
                         <div class="px-20 text-center">
                             <p>
@@ -52,7 +52,7 @@ pub fn HomePage() -> impl IntoView {
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                        <img class="h-64 m-5" src="assets/img/rezervari.png" />
+                        <img class="h-64 m-5" src="assets/img/rezervation.png" />
                         <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Gallery</h2>
                         <div class="px-20 text-center">
                             <p>
