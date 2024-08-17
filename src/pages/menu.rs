@@ -1,10 +1,8 @@
-use crate::header2::Header2;
 use leptos::*;
 
 #[component]
 pub fn Menu() -> impl IntoView {
     view! {
-        <Header2/>
         <main class="container mx-auto">
             <section class="mt-20 text-center">
                 <div class="flex justify-center items-center">

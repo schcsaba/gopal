@@ -1,10 +1,8 @@
-use crate::header::Header;
 use leptos::*;
 
 #[component]
 pub fn Home() -> impl IntoView {
     view! {
-            <Header/>
             <main class="container mx-auto">
                 <section class="py-20">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
@@ -96,7 +94,7 @@ pub fn Home() -> impl IntoView {
                                         </p>
                                         <a
                                             class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
-                                            href="#">Rezervati
+                                            href="reservation">Reservation
                                         </a>
                                     </div>
                                 </div>

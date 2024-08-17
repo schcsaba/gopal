@@ -4,9 +4,7 @@ pub mod error_template;
 pub mod fileserv;
 pub mod footer;
 pub mod header;
-pub mod header2;
 pub mod nav;
-pub mod nav2;
 pub mod pages;
 pub mod video;
 

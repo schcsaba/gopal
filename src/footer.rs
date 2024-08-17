@@ -12,8 +12,8 @@ pub fn Footer() -> impl IntoView {
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-6">SITE MENU</li>
                         <li class="pb-1"><a href="menu">Menu</a></li>
-                        <li class="pb-1">Rezervation</li>
-                        <li class="pb-1">Contact</li>
+                        <li class="pb-1"><a href="reservation">Reservation</a></li>
+                        <li class="pb-1"><a href="contact">Contact</a></li>
                         <li class="pb-1">Site Policy</li>
                         <li class="pb-1">Cookie Policy</li>
                         <li class="pb-1">GDPR Information</li>

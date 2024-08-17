@@ -1,14 +1,36 @@
 use leptos::*;
+use leptos_router::*;
 
 #[component]
 pub fn Nav() -> impl IntoView {
     let (is_open, set_is_open) = create_signal(false);
+    let location = use_location();
+    let is_home = move || location.pathname.get() == "/";
+    let is_menu = move || location.pathname.get() == "/menu";
+    let is_reservation = move || location.pathname.get() == "/reservation";
+    let is_contact = move || location.pathname.get() == "/contact";
 
     view! {
-        <nav class="relative z-20 top-0 right-0 w-full inline-block px-10 pt-5 text-2xl text-white bg-transparent bg-opacity-50 rounded-xl">
+        <nav
+            class=("text-white", move || is_home())
+            class=("text-black", move || !is_home())
+            class="relative z-20 top-0 right-0 w-full inline-block px-10 pt-5 text-2xl bg-transparent bg-opacity-50 rounded-xl"
+        >
             <div class="flex justify-between items-center">
                 <div>
-                    <img alt="Picnic Bistro Logo" class="h-20 lg:h-32" src="assets/img/picnic-logo-white.svg" />
+                    {
+                        move || if is_home() {
+                            view! {
+                                <img alt="Picnic Bistro Logo" class="h-20 lg:h-32" src="assets/img/picnic-logo-white.svg" />
+                            }.into_any()
+                        } else {
+                            view! {
+                                <a href="/">
+                                    <img alt="Picnic Bistro Logo" class="h-20 lg:h-32" src="assets/img/picnic-logo-black.svg" />
+                                </a>
+                            }.into_any()
+                        }
+                    }
                 </div>
                 <div class="hidden lg:block">
                     <ul class="flex">
@@ -16,10 +38,10 @@ pub fn Nav() -> impl IntoView {
                             <a class="tracking-widest font-thin" href="menu">MENU</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="rezervari.html">REZERVATION</a>
+                            <a class="tracking-widest" href="reservation">RESERVATION</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="contact.html">CONTACT</a>
+                            <a class="tracking-widest" href="contact">CONTACT</a>
                         </li>
                     </ul>
                 </div>
@@ -44,6 +66,11 @@ pub fn Nav() -> impl IntoView {
                                 clip-rule="evenodd"
                                 d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
                                 fill-rule="evenodd"
+                                fill=move || if is_home() {
+                                    "white"
+                                } else {
+                                    "black"
+                                }
                             />
                         }
                     } else {
@@ -51,6 +78,11 @@ pub fn Nav() -> impl IntoView {
                             <path
                                 d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                                 fill-rule="evenodd"
+                                fill=move || if is_home() {
+                                    "white"
+                                } else {
+                                    "black"
+                                }
                             />
                         }
                     }}
@@ -67,9 +99,12 @@ pub fn Nav() -> impl IntoView {
                     <li class="mr-3">
                         <a
                             on:click=move |_| {
-                                set_is_open.update(|o| *o = true);
+                                set_is_open.update(|o| *o = !*o);
                             }
-                            class="inline-block py-2 px-4 text-white no-underline"
+                            class=("text-white", move || is_home())
+                            class=("hover:text-gray-200", move || !is_home())
+                            class=("hover:text-underline", move || !is_home())
+                            class="inline-block py-2 px-4 no-underline"
                             href="/"
                         >
                             HOME
@@ -78,9 +113,11 @@ pub fn Nav() -> impl IntoView {
                     <li class="mr-3">
                         <a
                             on:click=move |_| {
-                                set_is_open.update(|o| *o = false);
+                                set_is_open.update(|o| *o = !*o);
                             }
-                            class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            class=("text-gray-200", move || is_menu())
+                            class=("text-gray-600", move || !is_menu())
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
                             href="menu"
                         >
                             MENU
@@ -89,21 +126,25 @@ pub fn Nav() -> impl IntoView {
                     <li class="mr-3">
                         <a
                             on:click=move |_| {
-                                set_is_open.update(|o| *o = false);
+                                set_is_open.update(|o| *o = !*o);
                             }
-                            class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                            href="rezervari.html"
+                            class=("text-gray-200", move || is_reservation())
+                            class=("text-gray-600", move || !is_reservation())
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            href="reservation"
                         >
-                            REZERVATION
+                            RESERVATION
                         </a>
                     </li>
                         <li class="mr-3">
                         <a
                             on:click=move |_| {
-                                set_is_open.update(|o| *o = false);
+                                set_is_open.update(|o| *o = !*o);
                             }
-                            class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                            href="contact.html"
+                            class=("text-gray-200", move || is_contact())
+                            class=("text-gray-600", move || !is_contact())
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            href="contact"
                         >
                             CONTACT
                         </a>
