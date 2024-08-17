@@ -30,7 +30,7 @@ pub fn App() -> impl IntoView {
             .into_view()
         }>
             <Header/>
-            <main>
+            <main class="container mx-auto">
                 <Routes>
                     <Route path="" view=HomePage/>
                 </Routes>

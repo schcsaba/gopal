@@ -23,7 +23,13 @@ async fn main() {
         .fallback(file_and_error_handler)
         .with_state(leptos_options);
 
-    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+    let listener = match tokio::net::TcpListener::bind(&addr).await {
+        Ok(listener) => listener,
+        Err(e) => {
+            eprintln!("Failed to bind to address {}: {}", addr, e);
+            std::process::exit(1);
+        }
+    };
     logging::log!("listening on http://{}", &addr);
     axum::serve(listener, app.into_make_service())
         .await
