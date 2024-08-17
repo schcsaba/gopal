@@ -11,7 +11,7 @@ pub fn Footer() -> impl IntoView {
                 <div class="flex justify-center h-64 w-full lg:w-1/4">
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-6">SITE MENU</li>
-                        <li class="pb-1">Menu</li>
+                        <li class="pb-1"><a href="menu">Menu</a></li>
                         <li class="pb-1">Rezervation</li>
                         <li class="pb-1">Contact</li>
                         <li class="pb-1">Site Policy</li>
