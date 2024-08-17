@@ -2,6 +2,7 @@ pub mod app;
 pub mod error_template;
 #[cfg(feature = "ssr")]
 pub mod fileserv;
+pub mod footer;
 pub mod header;
 pub mod nav;
 pub mod pages;

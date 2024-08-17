@@ -1,4 +1,5 @@
 use crate::error_template::{AppError, ErrorTemplate};
+use crate::footer::Footer;
 use crate::header::Header;
 use crate::pages::home_page::HomePage;
 use leptos::*;
@@ -35,6 +36,7 @@ pub fn App() -> impl IntoView {
                     <Route path="" view=HomePage/>
                 </Routes>
             </main>
+            <Footer/>
         </Router>
     }
 }
