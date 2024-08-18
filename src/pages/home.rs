@@ -10,7 +10,7 @@ pub fn Home() -> impl IntoView {
                             <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.png" />
                         </div>
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
-                            <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Discover our menu</h2>
+                            <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Découvrez notre menu</h2>
                             <p class="text-2xl mb-12 p-5" data-scroll>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut
                                 iaculis lectus. In lobortis tortor eget venenatis ultrices. Fusce rhoncus tincidunt purus et egestas.
@@ -18,7 +18,7 @@ pub fn Home() -> impl IntoView {
                             </p>
                             <button class="px-3 py-4">
                                 <a class="px-3 py-4 bg-black text-white font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
-                                href="menu">Go to menu</a>
+                                href="menu">Aller au menu</a>
                             </button>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ pub fn Home() -> impl IntoView {
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Events</h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
@@ -36,7 +36,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">About us</h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center">À propos de nous</h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
@@ -45,7 +45,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Specials</h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Spécialités</h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
@@ -54,7 +54,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Gallery</h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Galerie</h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
@@ -66,7 +66,7 @@ pub fn Home() -> impl IntoView {
                 <section class="py-20">
                     <div class="flex flex-wrap md:flex-nowrap w-full p-5">
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
-                            <h2 class="text-4xl tracking-widest uppercase pb-5">Only GOOD vibes</h2>
+                            <h2 class="text-4xl tracking-widest uppercase pb-5">Que des BONNES vibrations</h2>
                             <p class="text-2xl mb-12 text-center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut iaculis lectus. In lobortis tortor eget venenatis ultrices. Fusce rhoncus tincidunt purus et egestas. Maecenas erat nisl, porta nec.
                             </p>
