@@ -21,12 +21,12 @@ pub fn Nav() -> impl IntoView {
                     {
                         move || if is_home() {
                             view! {
-                                <img alt="Picnic Bistro Logo" class="h-20 lg:h-32" src="assets/img/picnic-logo-white.svg" />
+                                <img alt="Gopal Logo" class="h-20 lg:h-32" src="assets/img/gopal-logo-white.svg" />
                             }.into_any()
                         } else {
                             view! {
                                 <a href="/">
-                                    <img alt="Picnic Bistro Logo" class="h-20 lg:h-32" src="assets/img/picnic-logo-black.svg" />
+                                    <img alt="Gopal Logo" class="h-20 lg:h-32" src="assets/img/gopal-logo-black.svg" />
                                 </a>
                             }.into_any()
                         }

@@ -6,7 +6,7 @@ pub fn Footer() -> impl IntoView {
         <footer class="container mx-auto">
             <div class="flex flex-wrap-reverse lg:flex-nowrap items-center justify-center lg:justify-between">
                 <div class="flex justify-center items-center w-full lg:w-1/4">
-                    <img alt="Picnic Bistro Logo" class="h-24 md:h-32" src="assets/img/picnic-logo-black.svg" />
+                    <img alt="Gopal Logo" class="h-24 md:h-40" src="assets/img/gopal-logo-black.svg" />
                 </div>
                 <div class="flex justify-center h-64 w-full lg:w-1/4">
                     <ul>
