@@ -91,9 +91,9 @@ pub fn Nav() -> impl IntoView {
                 </div>
             </div>
             <div
-                class:block=move || is_open()
-                class:hidden=move || !is_open()
-                class="w-full h-full z-50 lg:hidden lg:flex lg:items-center lg:w-auto text-right"
+                class=("max-h-0", move || !is_open())
+                class=("max-h-screen", move || is_open())
+                class="w-full h-full z-50 lg:hidden lg:flex lg:items-center lg:w-auto text-right overflow-hidden transition-all duration-400 ease-in-out"
             >
                 <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-start flex-1 items-center">
                     <li class="mr-3">
