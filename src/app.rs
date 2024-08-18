@@ -1,6 +1,6 @@
+use crate::elements::footer::Footer;
+use crate::elements::header::Header;
 use crate::error_template::{AppError, ErrorTemplate};
-use crate::footer::Footer;
-use crate::header::Header;
 use crate::pages::contact::Contact;
 use crate::pages::home::Home;
 use crate::pages::menu::Menu;

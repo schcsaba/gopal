@@ -1,5 +1,5 @@
-use crate::nav::Nav;
-use crate::video::Video;
+use crate::elements::nav::Nav;
+use crate::elements::video::Video;
 use leptos::*;
 use leptos_router::*;
 
