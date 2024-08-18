@@ -45,16 +45,11 @@ async fn get_static_file(
 ) -> Result<Response<Body>, (StatusCode, String)> {
     // `ServeDir` implements `tower::Service` so we can call it with `tower::ServiceExt::oneshot`
     // This path is relative to the cargo root
-    match ServeDir::new(root)
+    Ok(ServeDir::new(root)
         .precompressed_gzip()
         .precompressed_br()
         .oneshot(request)
         .await
-    {
-        Ok(res) => Ok(res.into_response()),
-        Err(err) => Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            format!("Error serving files: {err}"),
-        )),
-    }
+        .expect("ServeDir should never fail as it returns Result<Response<Body>, Infallible>")
+        .into_response())
 }

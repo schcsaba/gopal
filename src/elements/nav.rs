@@ -35,7 +35,7 @@ pub fn Nav() -> impl IntoView {
                 <div class="hidden lg:block">
                     <ul class="flex">
                         <li class="px-4 py-4">
-                            <a class="tracking-widest font-thin" href="menu">MENU</a>
+                            <a class="tracking-widest" href="menu">MENU</a>
                         </li>
                         <li class="px-4 py-4">
                             <a class="tracking-widest" href="reservation">RESERVATION</a>
