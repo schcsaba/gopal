@@ -22,7 +22,7 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/gopal.css"/>
 
         // sets the document title
-        <Title text="Leptos + Tailwindcss"/>
+        <Title text="Le Gopal Tours"/>
 
         // content for this welcome page
         <Router fallback=|| {

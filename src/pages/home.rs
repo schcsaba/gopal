@@ -85,25 +85,31 @@ pub fn Home() -> impl IntoView {
                             <div class="flex flex-wrap -mx-8">
                                 <div class="w-full lg:w-1/2 px-8 flex">
                                     <div class="my-auto">
-                                        <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Pay us a visit :</h2>
-                                        <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold text-white">PICNIC BISTRO</p>
-                                        <p class="mt-2 mb-6 leading-loose text-white">Ineu 1A, 417295, Bihor, RO</p>
-                                        <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Call us :</h2>
+                                        <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Rendez-nous visite :</h2>
+                                        <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold text-white">LE GOPAL</p>
+                                        <p class="mt-2 mb-6 leading-loose text-white">8 Avenue du Mans<br />37100 Tours, France</p>
+                                        <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Appelez-nous :</h2>
                                         <p class="mt-2 mb-6 leading-loose text-white">
-                                            +40 742 742 642
+                                            07 83 65 45 65
                                         </p>
                                         <a
                                             class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
-                                            href="reservation">Reservation
+                                            href="reservation">Réservation
                                         </a>
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">
                                     <div class="embed-responsive aspect-ratio-4/3">
-                                        <iframe allowfullscreen=""
-                                                aria-hidden="false" class="embed-responsive-item" frameborder="0" height="450"
-                                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10868.916974462507!2d22.09788090472412!3d47.0749679541605!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4570e157c679cb5!2sPicnic%20Bistro!5e0!3m2!1sfr!2sfr!4v1610973279353!5m2!1sfr!2sfr"
-                                                style="border:0;" tabindex="0" width="600">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.13273053803!2d0.6773934768938756!3d47.4093521711725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5dbe973d05f%3A0x4623a58782228f72!2sGopal!5e0!3m2!1sen!2sfr!4v1723976237764!5m2!1sen!2sfr"
+                                            width="600"
+                                            height="450"
+                                            style="border:0;"
+                                            allowfullscreen=""
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            class="embed-responsive-item"
+                                        >
                                         </iframe>
                                     </div>
                                 </div>

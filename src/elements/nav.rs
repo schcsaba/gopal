@@ -38,7 +38,7 @@ pub fn Nav() -> impl IntoView {
                             <a class="tracking-widest" href="menu">MENU</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="reservation">RESERVATION</a>
+                            <a class="tracking-widest" href="reservation">RÉSERVATION</a>
                         </li>
                         <li class="px-4 py-4">
                             <a class="tracking-widest" href="contact">CONTACT</a>
@@ -133,7 +133,7 @@ pub fn Nav() -> impl IntoView {
                             class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
                             href="reservation"
                         >
-                            RESERVATION
+                            RÉSERVATION
                         </a>
                     </li>
                         <li class="mr-3">
