@@ -99,7 +99,7 @@ pub fn Home() -> impl IntoView {
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">
-                                    <div class="embed-responsive aspect-ratio-4/3">
+                                    <div class="aspect-w-4 aspect-h-3">
                                         <iframe
                                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.13273053803!2d0.6773934768938756!3d47.4093521711725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5dbe973d05f%3A0x4623a58782228f72!2sGopal!5e0!3m2!1sen!2sfr!4v1723976237764!5m2!1sen!2sfr"
                                             width="600"
@@ -108,7 +108,6 @@ pub fn Home() -> impl IntoView {
                                             allowfullscreen=""
                                             loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade"
-                                            class="embed-responsive-item"
                                         >
                                         </iframe>
                                     </div>
