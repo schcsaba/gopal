@@ -26,7 +26,7 @@ pub fn Home() -> impl IntoView {
                 <section class="py-20">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -35,7 +35,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center">À propos de nous</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -44,7 +44,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Spécialités</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -53,7 +53,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Galerie</h2>
                             <div class="px-20 text-center">
                                 <p>
