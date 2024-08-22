@@ -4,6 +4,7 @@ use crate::error_template::{AppError, ErrorTemplate};
 use crate::pages::contact::Contact;
 use crate::pages::home::Home;
 use crate::pages::menu::Menu;
+use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
 use leptos::*;
 use leptos_meta::*;
@@ -39,6 +40,7 @@ pub fn App() -> impl IntoView {
                 <Route path="menu" view=Menu/>
                 <Route path="reservation" view=Reservation/>
                 <Route path="contact" view=Contact/>
+                <Route path="policy" view=Policy/>
             </Routes>
             <Footer/>
         </Router>

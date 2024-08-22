@@ -14,7 +14,7 @@ pub fn Footer() -> impl IntoView {
                         <li class="pb-1"><a href="menu">Menu</a></li>
                         <li class="pb-1"><a href="reservation">Réservation</a></li>
                         <li class="pb-1"><a href="contact">Contact</a></li>
-                        <li class="pb-1">Mentions légales et<br />Politique de Confidentialité</li>
+                        <li class="pb-1"><a href="policy">Mentions légales et<br />Politique de Confidentialité</a></li>
                     </ul>
                 </div>
                 <div class="flex justify-center h-64 w-full lg:w-1/4">
