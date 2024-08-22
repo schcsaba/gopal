@@ -31,9 +31,16 @@ pub fn Footer() -> impl IntoView {
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-4">SOCIAL</li>
                         <li class="font-sans font-bold text-lg py-2">Retrouvez-nous sur les réseaux sociaux</li>
-                        <li>instagram / facebook</li>
+                        <li>
+                            <a href="https://www.instagram.com/le_gopal/" target="_blank" rel="noreferrer noopener">instagram</a> /
+                            <a href="https://www.facebook.com/Legopaltours" target="_blank" rel="noreferrer noopener">facebook</a> /
+                            <a href="https://m.me/Legopaltours" target="_blank" rel="noreferrer noopener">messenger</a>
+                        </li>
                         <li class="font-sans font-bold text-lg py-2">Laissez-nous une note</li>
-                        <li>google / tripadvisor</li>
+                        <li>
+                            <a href="https://www.google.com/search?hl=fr-FR&gl=fr&q=Gopal,+8+Av.+du+Mans,+37100+Tours" target="_blank" rel="noreferrer noopener">google</a> /
+                            <a href="https://www.tripadvisor.fr/Restaurant_Review-g187130-d19250495-Reviews-Gopal-Tours_Indre_et_Loire_Centre_Val_de_Loire.html" target="_blank" rel="noreferrer noopener">tripadvisor</a>
+                        </li>
                     </ul>
                 </div>
             </div>
