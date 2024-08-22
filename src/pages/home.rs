@@ -12,9 +12,8 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                             <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Découvrez notre menu</h2>
                             <p class="text-2xl mb-12 p-5" data-scroll>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut
-                                iaculis lectus. In lobortis tortor eget venenatis ultrices. Fusce rhoncus tincidunt purus et egestas.
-                                Maecenas erat nisl, porta nec.
+                                Au Gopal venez découvrir notre cuisine végétarienne et végane Internationale,
+                                aussi bien inspirée des saveurs indiennes que des bons petits plats de chez nous.
                             </p>
                             <button class="px-3 py-4">
                                 <a class="px-3 py-4 bg-black text-white font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
@@ -39,7 +38,8 @@ pub fn Home() -> impl IntoView {
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center">À propos de nous</h2>
                             <div class="px-20 text-center">
                                 <p>
-                                    Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
+                                    Créé à Tours en Novembre 2019, le Gopal vous propose de venir déguster une cuisine 100% végétarienne
+                                    et végane dans un cadre calme et serein.
                                 </p>
                             </div>
                         </div>
