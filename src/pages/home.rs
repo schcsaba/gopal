@@ -45,11 +45,13 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Spécialités</h2>
+                            <a href="menu"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" /></a>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="menu">Spécialités</a></h2>
                             <div class="px-20 text-center">
                                 <p>
-                                    Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
+                                    Découvrez nos spécialités végétariennes et véganes, alliant cuisine traditionnelle et inspirations
+                                    internationales, avec des plats savoureux comme notre curry parfumé, nos lasagnes royales, ou encore
+                                    nos desserts gourmands. Venez les déguster et laissez-vous surprendre !
                                 </p>
                             </div>
                         </div>
