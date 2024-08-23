@@ -19,7 +19,7 @@ pub fn Footer() -> impl IntoView {
                     </ul>
                 </div>
                 <div class="flex justify-center h-64 w-full lg:w-1/4">
-                    <ul class="-ml-20">
+                    <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-4">TROUVEZ-NOUS</li>
                         <li class="font-sans  font-bold text-lg py-2">Adresse :</li>
                         <li>8 Avenue du Mans<br />37100 Tours, France</li>

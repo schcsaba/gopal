@@ -4,7 +4,7 @@ use leptos::*;
 pub fn Home() -> impl IntoView {
     view! {
             <main class="container mx-auto">
-                <section class="py-20">
+                <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
                             <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.png" />
@@ -22,7 +22,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                     </div>
                 </section>
-                <section class="py-20">
+                <section class="py-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
@@ -67,7 +67,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                     </div>
                 </section>
-                <section class="py-20">
+                <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap w-full p-5">
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                             <h2 class="text-4xl tracking-widest uppercase pb-5">Que des BONNES vibrations</h2>
@@ -81,7 +81,7 @@ pub fn Home() -> impl IntoView {
                     </div>
                 </section>
                 <section
-                    class="my-20 bg-fixed bg-center object-contain overflow-x-visible w-full"
+                    class="my-10 bg-fixed bg-center object-contain overflow-x-visible w-full"
                     style="background-image: url('assets/img/sunset.jpg')"
                 >
                     <div class="container px-4 mx-auto">
