@@ -35,8 +35,8 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center">À propos de nous</h2>
+                            <a href="about"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" /></a>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="about">À propos de nous</a></h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Créé à Tours en Novembre 2019, le Gopal vous propose de venir déguster une cuisine 100% végétarienne
@@ -120,6 +120,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                     </div>
                 </section>
+                <iframe class="pb-6" src="https://2bc10f5dd2994533866aac1fe6e8e6fb.elf.site" width="100%" height="700" frameborder="0"></iframe>
             </main>
     }
 }
