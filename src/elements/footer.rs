@@ -23,8 +23,8 @@ pub fn Footer() -> impl IntoView {
                         <li class="font-sans  font-bold text-lg py-2">Adresse :</li>
                         <li>8 Avenue du Mans<br />37100 Tours, France</li>
                         <li class="font-sans  font-bold text-lg py-2">Téléphone / Email :</li>
-                        <li>07 83 65 45 65</li>
-                        <li>contact@legopal.fr</li>
+                        <li><a href="tel:+33783654565">07 83 65 45 65</a></li>
+                        <li><a href="mailto:contact@legopal.fr">contact@legopal.fr</a></li>
                     </ul>
                 </div>
                 <div class="flex justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">

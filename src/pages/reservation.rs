@@ -6,15 +6,15 @@ pub fn Reservation() -> impl IntoView {
         <main class="container mx-auto">
             <section class="container mx-auto my-20">
                 <div class="text-center">
-                    <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">Réservation :</h2>
-                    <p class="text-3xl pb-4">07 83 65 45 65</p>
-                    <p class="text-2xl pb-6">or</p>
-                    <p class="text-3xl pb-4">contact@legopal.fr</p>
-                    <h2 class="font-sans font-bold text-3xl pt-6 pb-6 uppercase tracking-wide">Règlement intérieur :</h2>
-                    <p class="text-xl pb-2">Terasa este structurata pe mese de 3 / 6 persoane </p>
-                    <p class="text-xl pb-2">Rezervarile se fac pe cat pe posibil, inainte cu o zi, respectiv 3 zile, pentru grupurile
-                    mai mare decat 6 persoane.</p>
-                    <p class="text-xl pb-2">Rezervarile se pastreaza 20 de min</p>
+                    <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">Sur place ou à emporter ou livraison à domicile</h2>
+                    <p class="text-2xl pb-4">Livraison à domicile : <a href="https://www.frerestoque.fr/shop/angers-centre-ville/gopal" target="_blank" rel="noreferrer">Cliquez ici</a></p>
+                    <p class="text-2xl pb-4">Tél : <a href="tel:+33783654565">07 83 65 45 65</a></p>
+                    <p class="text-2xl pb-4">Email : <a href="mailto:contact@legopal.fr">contact@legopal.fr</a></p>
+                    <p class="text-2xl pb-6">Messenger : <a href="https://m.me/Legopaltours" target="_blank" rel="noreferrer">LeGopaltours</a></p>
+                    <p class="text-xl pb-6">"Méthodes de paiement : Espèces · Visa · Mastercard · Ticket restaurant"</p>
+                    <p class="text-2xl pb-6 font-extrabold">Tous nos plats sont faits maison.</p>
+                    <h2 class="font-sans font-bold text-4xl pt-6 pb-6 uppercase tracking-wide">Réservez une table</h2>
+                    <iframe src="https://widget.thefork.com/60d93c62-f1bb-412e-9206-93ab3a1900cb" allow="payment *" title="TheFork" style="width: 100%; min-height: 800px; border: none; overflow: scroll;"></iframe>
                 </div>
                 <div class="text-center my-10">
                     <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">"Heures d'ouverture : "</h2>
