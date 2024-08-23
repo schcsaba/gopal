@@ -7,10 +7,10 @@ pub fn Reservation() -> impl IntoView {
             <section class="container mx-auto my-20">
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">Sur place ou à emporter ou livraison à domicile</h2>
-                    <p class="text-2xl pb-4">Livraison à domicile : <a href="https://www.frerestoque.fr/shop/angers-centre-ville/gopal" target="_blank" rel="noreferrer">Cliquez ici</a></p>
-                    <p class="text-2xl pb-4">Tél : <a href="tel:+33783654565">07 83 65 45 65</a></p>
-                    <p class="text-2xl pb-4">Email : <a href="mailto:contact@legopal.fr">contact@legopal.fr</a></p>
-                    <p class="text-2xl pb-6">Messenger : <a href="https://m.me/Legopaltours" target="_blank" rel="noreferrer">LeGopaltours</a></p>
+                    <p class="text-2xl pb-4">Livraison à domicile : <span class="underline decoration-1 underline-offset-2"><a href="https://www.frerestoque.fr/shop/angers-centre-ville/gopal" target="_blank" rel="noreferrer">Cliquez ici</a></span></p>
+                    <p class="text-2xl pb-4">Tél : <span class="underline decoration-1 underline-offset-2"><a href="tel:+33783654565">07 83 65 45 65</a></span></p>
+                    <p class="text-2xl pb-4">Email : <span class="underline decoration-1 underline-offset-2"><a href="mailto:contact@legopal.fr">contact@legopal.fr</a></span></p>
+                    <p class="text-2xl pb-6">Messenger : <span class="underline decoration-1 underline-offset-2"><a href="https://m.me/Legopaltours" target="_blank" rel="noreferrer">LeGopaltours</a></span></p>
                     <p class="text-xl pb-6">"Méthodes de paiement : Espèces · Visa · Mastercard · Ticket restaurant"</p>
                     <p class="text-2xl pb-6 font-extrabold">Tous nos plats sont faits maison.</p>
                     <h2 class="font-sans font-bold text-4xl pt-6 pb-6 uppercase tracking-wide">Réservez une table</h2>
