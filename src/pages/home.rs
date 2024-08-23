@@ -29,7 +29,8 @@ pub fn Home() -> impl IntoView {
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
-                                    Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
+                                    Participez à nos soirées kirtan chaque vendredi de 19h00 à 20h30, et laissez-vous emporter par une
+                                    méditation musicale apaisante dans une ambiance conviviale.
                                 </p>
                             </div>
                         </div>
@@ -57,7 +58,8 @@ pub fn Home() -> impl IntoView {
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Galerie</h2>
                             <div class="px-20 text-center">
                                 <p>
-                                    Maecenas erat nisl, porta nec fringilla in, tincidunt eget sem. Nunc in magna vitae lectus ultrices vestibulum. Maecenas rutrum rhoncus ipsum, in porta lectus viverra eget
+                                    "Explorez notre galerie pour un aperçu en images de nos délicieuses préparations culinaires
+                                    et de l’atmosphère chaleureuse de notre restaurant."
                                 </p>
                             </div>
                         </div>
@@ -68,7 +70,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                             <h2 class="text-4xl tracking-widest uppercase pb-5">Que des BONNES vibrations</h2>
                             <p class="text-2xl mb-12 text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut iaculis lectus. In lobortis tortor eget venenatis ultrices. Fusce rhoncus tincidunt purus et egestas. Maecenas erat nisl, porta nec.
+                                Venez partager des moments de convivialité dans une ambiance joyeuse et positive, où bonne humeur et bien-être sont toujours au rendez-vous.
                             </p>
                         </div>
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
