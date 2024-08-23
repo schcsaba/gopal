@@ -10,73 +10,45 @@ pub fn Menu() -> impl IntoView {
                 </div>
 
                 <ul>
-                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Drinks</li>
+                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Formules</li>
                     <li class="pb-20 text-2xl">
-                    <ul class="menu">
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                    </ul>
+                        <ul>
+                            <li class="py-4 font-sans font-extrabold">"Assiette Gourmande 9,00 €"</li>
+                            <li class="mb-8">samosa aux légumes + salade composée</li>
+                            <li class="py-4 font-sans font-extrabold">"Plat du jour 11,50 €"</li>
+                            <li class="mb-8">riz parfumé + curry <span class="font-extrabold">ou</span> boulettes de légumes <span class="font-extrabold">ou</span> soupe (au choix) + galette papadam</li>
+                            <li class="py-4 font-sans font-extrabold">"Menu « Gopal » 16 €"</li>
+                            <li class="mb-8">salade composée + riz parfumé + curry + boulettes de légumes + soupe + galette papadam</li>
+                            <li class="py-4 font-sans font-extrabold">"Spéciale du chef 13,50 €"</li>
+                            <li>lasagne royale, calzoni, fougasse, etc... + salade composée</li>
+                        </ul>
                     </li>
-                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Drinks</li>
+                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Desserts</li>
                     <li class="pb-20 text-2xl">
-                    <ul>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                    </ul>
+                        <ul>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Cheesecake (caramel/chocolat, mangue ou fruits rouges...) 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Cupcake (ex : chocolat, crème de marron, framboise...) 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Crumble 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Mousse au chocolat vegan 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Pannacotta vegan 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Gâteau du chef vegan (la part) 5,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Halava (gâteau semoule) 5,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Tarte au citron vegan (la part) 5,50 €"</li>
+                        </ul>
                     </li>
-                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Drinks</li>
+                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Boissons</li>
                     <li class="pb-20 text-2xl">
-                    <ul>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                    </ul>
-                    </li>
-                    <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Drinks</li>
-                    <li class="pb-20 text-2xl">
-                    <ul>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                        <li class="py-4 font-sans font-bold">Dish #1 - 5</li>
-                        <li>Component 1 . Component 2 . Component . Component 4</li>
-                    </ul>
+                        <ul>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Lassi (au yaourt vegan, parfum mangue ou rose) 25 cl 3,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Limonade maison (menthe fraîche, citron vert, gingembre) 25 cl 3,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"San Pellegrino aromatisée 33 c 2,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Bière sans alcool 25 cl 3,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Tisane 20 cl 1,80 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Eau pétillante 33 cl 2,50 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Eau plate 50 cl 2,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Café expresso 2,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"Double expresso 2,80 €"</li>
+                        </ul>
                     </li>
                 </ul>
             </section>
