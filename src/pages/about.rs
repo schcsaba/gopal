@@ -4,16 +4,37 @@ use leptos::*;
 pub fn About() -> impl IntoView {
     view! {
         <main class="container mx-auto">
-            <section class="mt-20 text-center">
-                <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">À propos de nous</h2>
-                <p class="text-2xl pb-2">
-                    Créé à Tours en Novembre 2019, le Gopal vous propose de venir déguster une cuisine
-                    100% végétarienne et végane dans un cadre calme et serein.
+            <section class="mt-20">
+                <h2 class="font-sans font-bold text-4xl pb-8 uppercase tracking-wide text-center">À propos de nous</h2>
+                <p class="text-2xl pb-4">
+                    "Le restaurant Le Gopal, situé en haut de l’avenue de la Tranchée à Tours, est né de la passion de Sylvain et Sumitra
+                    pour la cuisine végétarienne et végane, inspirée à la fois par les traditions indiennes et les saveurs internationales.
+                    Depuis 2019, ils vous invitent à découvrir un univers culinaire où l’éthique et le respect de l’environnement sont au cœur
+                    de chaque plat."
+                </p>
+                <p class="text-2xl pb-4">
+                    "Sylvain et Sumitra ont commencé leur aventure dans la restauration dès 1998, en proposant des plats végétariens indiens
+                    dans des salons bio et bien-être à travers la France. Leur rêve d’ouvrir un restaurant fixe s’est concrétisé grâce à une
+                    opportunité à Tours et à la rencontre de Radha, leur cheffe cuisinière. Avec son parcours international, elle apporte
+                    à chaque assiette une authenticité unique et une richesse de saveurs."
+                </p>
+                <p class="text-2xl pb-4">
+                    "Au Gopal, l’engagement pour une alimentation plus respectueuse va de pair avec l’utilisation de produits locaux et de
+                    qualité. Les légumes proviennent de maraîchers de la région, et le lait est fourni par un fermier local. Pour Sylvain et
+                    Sumitra, le choix du végétarien et du végan n’est pas une tendance, mais une conviction profonde d’une alimentation plus
+                    harmonieuse pour le corps, l’esprit et la planète."
+                </p>
+                <p class="text-2xl pb-4">
+                    "Malgré les défis des dernières années, notamment les périodes difficiles de 2020 et 2021, Le Gopal a su trouver sa place
+                    parmi les adresses appréciées des tourangeaux, qui soutiennent fidèlement ce projet chaleureux et authentique."
                 </p>
                 <p class="text-2xl pb-6">
-                    "Dans une démarche écologique, nous nous efforçons d’utiliser au maximum des produits frais
-                    et de production locale... et tous nos plats et desserts sont faits maison !"
+                    "Prêts à découvrir ou redécouvrir Le Gopal ? Sylvain, Sumitra et toute l’équipe vous attendent avec impatience pour partager
+                    leur passion dans une ambiance conviviale et pleine de bonnes vibrations."
                 </p>
+                <div class="flex items-center justify-center">
+                    <img class="h-128 pb-6" src="assets/img/founders.png" />
+                </div>
                 <iframe class="pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" width="100%" height="1000" frameborder="0"></iframe>
             </section>
         </main>

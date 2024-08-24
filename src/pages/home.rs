@@ -7,7 +7,7 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-                            <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.png" />
+                            <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.jpg" />
                         </div>
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                             <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Découvrez notre menu</h2>
@@ -25,7 +25,7 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/events.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -35,7 +35,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="about"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" /></a>
+                            <a href="about"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/about.jpg" /></a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="about">À propos de nous</a></h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -45,7 +45,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="menu"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" /></a>
+                            <a href="menu"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/specialities.jpg" /></a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="menu">Spécialités</a></h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -56,7 +56,7 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/rezervation.png" />
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/gallery.png" />
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Galerie</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -82,7 +82,7 @@ pub fn Home() -> impl IntoView {
                 </section>
                 <section
                     class="my-10 bg-fixed bg-center object-contain overflow-x-visible w-full"
-                    style="background-image: url('assets/img/sunset.jpg')"
+                    style="background-image: url('assets/img/affection.jpg')"
                 >
                     <div class="container px-4 mx-auto">
                         <div class="pt-20 pb-24 px-8 md:px-16 rounded">
