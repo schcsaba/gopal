@@ -55,7 +55,7 @@ pub fn Reservation() -> impl IntoView {
                     <img class="h-32" src="assets/img/Capturepicpic.png" />
                 </div>
                 <div class="text-center">
-                    <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">"Nos cartes cadeaux !!! 🎁😄"</h2>
+                    <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">"Nos cartes cadeaux !!! 🎁😄"</h2>
                     <p class="text-xl pb-6">En vente au Gopal !</p>
                     <p class="text-xl pb-6">Faites plaisir à coup sûr !</p>
                 </div>

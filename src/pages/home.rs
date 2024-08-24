@@ -70,7 +70,7 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap w-full p-5">
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
-                            <h2 class="text-4xl tracking-widest uppercase pb-5">Que des BONNES vibrations</h2>
+                            <h2 class="text-4xl tracking-widest uppercase pb-5">Que des bonnes vibrations</h2>
                             <p class="text-2xl mb-12 text-center">
                                 Venez partager des moments de convivialité dans une ambiance joyeuse et positive, où bonne humeur et bien-être sont toujours au rendez-vous.
                             </p>
@@ -90,11 +90,11 @@ pub fn Home() -> impl IntoView {
                                 <div class="w-full lg:w-1/2 px-8 flex">
                                     <div class="my-auto">
                                         <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Rendez-nous visite :</h2>
-                                        <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold text-white">LE GOPAL</p>
+                                        <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold text-white">Le Gopal</p>
                                         <p class="mt-2 mb-6 leading-loose text-white">8 Avenue du Mans<br />37100 Tours, France</p>
                                         <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Appelez-nous :</h2>
                                         <p class="mt-2 mb-6 leading-loose text-white">
-                                            07 83 65 45 65
+                                            <a href="tel:+33783654565">07 83 65 45 65</a>
                                         </p>
                                         <a
                                             class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
