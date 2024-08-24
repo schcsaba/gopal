@@ -6,11 +6,12 @@ pub fn Footer() -> impl IntoView {
         <footer class="container mx-auto">
             <div class="flex flex-wrap-reverse lg:flex-nowrap items-center justify-center lg:justify-between">
                 <div class="flex justify-center items-center w-full lg:w-1/4">
-                    <img alt="Gopal Logo" class="h-24 md:h-40" src="assets/img/gopal-logo-black.svg" />
+                    <a href="/"><img alt="Gopal Logo" class="h-24 md:h-40" src="assets/img/gopal-logo-black.svg" /></a>
                 </div>
                 <div class="flex justify-center h-64 w-full lg:w-1/4">
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-6">PLAN DU SITE</li>
+                        <li class="pb-1"><a href="/">Accueil</a></li>
                         <li class="pb-1"><a href="menu">Menu</a></li>
                         <li class="pb-1"><a href="reservation">Réservation</a></li>
                         <li class="pb-1"><a href="contact">Contact</a></li>
