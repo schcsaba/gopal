@@ -25,16 +25,6 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/events.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
-                            <div class="px-20 text-center">
-                                <p>
-                                    Participez à nos soirées kirtan chaque vendredi de 19h00 à 20h30, et laissez-vous emporter par une
-                                    méditation musicale apaisante dans une ambiance conviviale.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <a href="about"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/about.jpg" /></a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="about">À propos de nous</a></h2>
                             <div class="px-20 text-center">
@@ -51,7 +41,7 @@ pub fn Home() -> impl IntoView {
                                 <p>
                                     Découvrez nos spécialités végétariennes et véganes, alliant cuisine traditionnelle et inspirations
                                     internationales, avec des plats savoureux comme notre curry parfumé, nos lasagnes royales, ou encore
-                                    nos desserts gourmands. Venez les déguster et laissez-vous surprendre !
+                                    nos desserts gourmands.
                                 </p>
                             </div>
                         </div>
@@ -62,6 +52,16 @@ pub fn Home() -> impl IntoView {
                                 <p>
                                     "Explorez notre galerie pour un aperçu en images de nos délicieuses préparations culinaires
                                     et de l’atmosphère chaleureuse de notre restaurant."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
+                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/events.png" />
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
+                            <div class="px-20 text-center">
+                                <p>
+                                    Participez à nos soirées kirtan chaque vendredi de 19h00 à 20h30, et laissez-vous emporter par une
+                                    méditation musicale apaisante dans une ambiance conviviale.
                                 </p>
                             </div>
                         </div>
