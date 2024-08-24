@@ -56,7 +56,7 @@ pub fn Reservation() -> impl IntoView {
                 </div>
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">"Nos cartes cadeaux !!! 🎁😄"</h2>
-                    <p class="text-xl pb-6">En vente au Gopal!</p>
+                    <p class="text-xl pb-6">En vente au Gopal !</p>
                     <p class="text-xl pb-6">Faites plaisir à coup sûr !</p>
                 </div>
                 <div class="flex items-center justify-center">
