@@ -3,6 +3,7 @@ use crate::elements::header::Header;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::pages::about::About;
 use crate::pages::contact::Contact;
+use crate::pages::gallery::Gallery;
 use crate::pages::home::Home;
 use crate::pages::menu::Menu;
 use crate::pages::policy::Policy;
@@ -43,6 +44,7 @@ pub fn App() -> impl IntoView {
                 <Route path="contact" view=Contact/>
                 <Route path="policy" view=Policy/>
                 <Route path="about" view=About/>
+                <Route path="gallery" view=Gallery/>
             </Routes>
             <Footer/>
         </Router>

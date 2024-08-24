@@ -599,12 +599,14 @@ dependencies = [
  "leptos_axum",
  "leptos_meta",
  "leptos_router",
+ "serde",
  "thiserror",
  "tokio",
  "tower",
  "tower-http",
  "tracing",
  "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]

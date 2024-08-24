@@ -57,7 +57,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/gallery.png" />
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Galerie</h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="gallery">Galerie</a></h2>
                             <div class="px-20 text-center">
                                 <p>
                                     "Explorez notre galerie pour un aperçu en images de nos délicieuses préparations culinaires
