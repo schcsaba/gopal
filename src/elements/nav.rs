@@ -35,13 +35,13 @@ pub fn Nav() -> impl IntoView {
                 <div class="hidden lg:block">
                     <ul class="flex">
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="menu">MENU</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="menu">Menu</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="reservation">RÉSERVATION</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="reservation">Réservation</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest" href="contact">CONTACT</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -104,10 +104,10 @@ pub fn Nav() -> impl IntoView {
                             class=("text-white", move || is_home())
                             class=("hover:text-gray-200", move || !is_home())
                             class=("hover:text-underline", move || !is_home())
-                            class="inline-block py-2 px-4 no-underline"
+                            class="inline-block py-2 px-4 no-underline uppercase"
                             href="/"
                         >
-                            HOME
+                            Accueil
                         </a>
                     </li>
                     <li class="mr-3">
@@ -117,10 +117,10 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_menu())
                             class=("text-gray-600", move || !is_menu())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
                             href="menu"
                         >
-                            MENU
+                            Menu
                         </a>
                     </li>
                     <li class="mr-3">
@@ -130,10 +130,10 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_reservation())
                             class=("text-gray-600", move || !is_reservation())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
                             href="reservation"
                         >
-                            RÉSERVATION
+                            Réservation
                         </a>
                     </li>
                         <li class="mr-3">
@@ -143,10 +143,10 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_contact())
                             class=("text-gray-600", move || !is_contact())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
                             href="contact"
                         >
-                            CONTACT
+                            Contact
                         </a>
                     </li>
                 </ul>
