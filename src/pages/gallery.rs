@@ -49,7 +49,7 @@ pub async fn get_images() -> Result<Vec<Image>, ServerFnError> {
 #[component]
 pub fn Gallery() -> impl IntoView {
     let images = create_resource(|| (), |_| get_images());
-    let (visible_count, set_visible_count) = create_signal(20);
+    let (visible_count, set_visible_count) = create_signal(10);
     let (expanded_image, set_expanded_image) = create_signal(None::<usize>);
 
     let handle_scroll = move |_: Event| {
