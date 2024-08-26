@@ -1,6 +1,12 @@
+#[cfg(target_arch = "wasm32")]
+use leptos::html;
 use leptos::*;
 use serde::{Deserialize, Serialize};
-use wasm_bindgen::prelude::*;
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::closure::Closure;
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::JsCast;
+#[cfg(target_arch = "wasm32")]
 use web_sys::Event;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -49,9 +55,16 @@ pub async fn get_images() -> Result<Vec<Image>, ServerFnError> {
 #[component]
 pub fn Gallery() -> impl IntoView {
     let images = create_resource(|| (), |_| get_images());
-    let (visible_count, set_visible_count) = create_signal(10);
-    let (expanded_image, set_expanded_image) = create_signal(None::<usize>);
+    let visible = create_signal(10);
+    let visible_count = visible.0;
+    #[cfg(target_arch = "wasm32")]
+    let set_visible_count = visible.1;
+    let image = create_signal(None::<usize>);
+    let expanded_image = image.0;
+    #[cfg(target_arch = "wasm32")]
+    let set_expanded_image = image.1;
 
+    #[cfg(target_arch = "wasm32")]
     let handle_scroll = move |_: Event| {
         let window = web_sys::window().unwrap();
         let document = window.document().unwrap();
@@ -72,6 +85,7 @@ pub fn Gallery() -> impl IntoView {
         }
     };
 
+    #[cfg(target_arch = "wasm32")]
     on_cleanup({
         let window = web_sys::window().unwrap();
         let listener = Closure::wrap(Box::new(handle_scroll) as Box<dyn Fn(Event)>);
@@ -85,6 +99,7 @@ pub fn Gallery() -> impl IntoView {
         }
     });
 
+    #[cfg(target_arch = "wasm32")]
     let scroll_to_center = move |node_ref: NodeRef<html::Div>| {
         if let Some(element) = node_ref.get_untracked() {
             let window = web_sys::window().unwrap();
@@ -120,7 +135,9 @@ pub fn Gallery() -> impl IntoView {
                             Ok(images) => images.into_iter().take(visible_count.get()).map(|image| {
                                 let id = image.id;
                                 let is_expanded = move || expanded_image.get() == Some(id);
-                                let node_ref = create_node_ref();
+                                #[cfg(target_arch = "wasm32")]
+                                let node_ref: NodeRef<html::Div> = create_node_ref();
+                                #[cfg(target_arch = "wasm32")]
                                 let toggle_expand = move |_| {
                                     if is_expanded() {
                                         set_expanded_image.set(None);
@@ -131,6 +148,9 @@ pub fn Gallery() -> impl IntoView {
                                         });
                                     }
                                 };
+
+                                #[cfg(not(target_arch = "wasm32"))]
+                                let toggle_expand = move |_| {};
 
                                 view! {
                                     <div
