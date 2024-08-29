@@ -29,7 +29,8 @@ pub async fn get_images() -> Result<Vec<Image>, ServerFnError> {
     use std::fs;
 
     let mut images = Vec::new();
-    let gallery_path = "public/assets/img/gallery";
+    let gallery_path =
+        std::env::var("GALLERY_PATH").unwrap_or_else(|_| "public/assets/img/gallery".to_string());
 
     if let Ok(entries) = fs::read_dir(gallery_path) {
         for (id, entry) in entries.enumerate() {
