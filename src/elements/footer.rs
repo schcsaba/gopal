@@ -8,7 +8,7 @@ pub fn Footer() -> impl IntoView {
                 <div class="flex justify-center items-center w-full lg:w-1/4">
                     <a href="/"><img alt="Gopal Logo" class="h-24 md:h-40" src="assets/img/gopal-logo-black.svg" /></a>
                 </div>
-                <div class="flex justify-center h-64 w-full lg:w-1/4">
+                <div class="flex justify-center h-72 w-full lg:w-1/4">
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-6 uppercase">Plan du site</li>
                         <li class="pb-1"><a href="/">Accueil</a></li>

@@ -9,6 +9,7 @@ use crate::pages::menu::Menu;
 use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
 use leptos::*;
+use leptos_image::provide_image_context;
 use leptos_meta::*;
 use leptos_router::*;
 
@@ -16,6 +17,7 @@ use leptos_router::*;
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+    provide_image_context();
 
     view! {
 

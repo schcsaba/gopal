@@ -6,7 +6,7 @@ pub fn Menu() -> impl IntoView {
         <main class="container mx-auto">
             <section class="mt-20 text-center">
                 <div class="flex justify-center items-center">
-                    <img src="assets/img/detourCapture.svg" />
+                    <img alt="Etagère avec ustensiles de cuisine" src="assets/img/detourCapture.svg" />
                 </div>
 
                 <ul>

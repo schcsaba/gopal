@@ -1,4 +1,5 @@
 use leptos::*;
+use leptos_image::Image;
 
 #[component]
 pub fn About() -> impl IntoView {
@@ -33,7 +34,15 @@ pub fn About() -> impl IntoView {
                     leur passion dans une ambiance conviviale et pleine de bonnes vibrations."
                 </p>
                 <div class="flex items-center justify-center">
-                    <img class="h-128 pb-6" src="assets/img/founders.png" />
+                    <div class="h-128 pb-6">
+                        <Image
+                            src="/assets/img/founders.png"
+                            blur=true
+                            width=597
+                            height=397
+                            quality=85
+                        />
+                    </div>
                 </div>
                 <iframe class="pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" width="100%" height="1000" frameborder="0"></iframe>
             </section>

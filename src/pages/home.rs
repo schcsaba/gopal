@@ -1,4 +1,5 @@
 use leptos::*;
+use leptos_image::Image;
 
 #[component]
 pub fn Home() -> impl IntoView {
@@ -7,7 +8,16 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-                            <img alt="Menu Link Image" class="object-fill" src="assets/img/menu.jpg" />
+                            <div class="object-fill">
+                                <Image
+                                    src="assets/img/menu.jpg"
+                                    blur=true
+                                    width=580
+                                    height=480
+                                    quality=85
+                                    alt="Découvrez notre menu"
+                                />
+                            </div>
                         </div>
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
                             <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Découvrez notre menu</h2>
@@ -25,7 +35,18 @@ pub fn Home() -> impl IntoView {
                 <section class="py-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="about"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/about.jpg" /></a>
+                            <a href="about">
+                                <div class="h-64 m-5">
+                                    <Image
+                                        src="assets/img/about.jpg"
+                                        blur=true
+                                        width=270
+                                        height=270
+                                        quality=85
+                                        alt="À propos de nous"
+                                    />
+                                </div>
+                            </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="about">À propos de nous</a></h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -35,7 +56,18 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="menu"><img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/specialities.jpg" /></a>
+                            <a href="menu">
+                                <div class="h-64 m-5">
+                                    <Image
+                                        src="assets/img/specialities.jpg"
+                                        blur=true
+                                        width=270
+                                        height=270
+                                        quality=85
+                                        alt="Spécialités"
+                                    />
+                                </div>
+                            </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="menu">Spécialités</a></h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -46,7 +78,18 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/gallery.png" />
+                            <a href="gallery">
+                                <div class="h-64 m-5">
+                                    <Image
+                                        src="assets/img/gallery.png"
+                                        blur=true
+                                        width=270
+                                        height=270
+                                        quality=85
+                                        alt="Galerie"
+                                    />
+                                </div>
+                            </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="gallery">Galerie</a></h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -56,7 +99,16 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <img alt="Rezervation Link Image" class="h-64 m-5" src="assets/img/events.png" />
+                            <div class="h-64 m-5">
+                                <Image
+                                    src="assets/img/events.png"
+                                    blur=true
+                                    width=270
+                                    height=270
+                                    quality=85
+                                    alt="Evénements"
+                                />
+                            </div>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
@@ -76,7 +128,16 @@ pub fn Home() -> impl IntoView {
                             </p>
                         </div>
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
-                            <img alt="Menu Link Image" class="object-fill" src="assets/img/good_vibes.jpg" />
+                            <div class="object-fill">
+                                <Image
+                                    src="assets/img/good_vibes.jpg"
+                                    blur=true
+                                    width=580
+                                    height=480
+                                    quality=85
+                                    alt="Que des bonnes vibration"
+                                />
+                            </div>
                         </div>
                     </div>
                 </section>
