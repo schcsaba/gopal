@@ -19,7 +19,7 @@ pub fn Reservation() -> impl IntoView {
                 </div>
                 <div class="text-center my-10">
                     <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">"Heures d'ouverture : "</h2>
-                    <div class="flex items-center justify-evenly text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-y-6 text-center">
                         <div>
                             <p class="font-sans font-bold text-2xl pb-2">
                             Mardi
