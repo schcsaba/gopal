@@ -33,7 +33,7 @@ pub fn Home() -> impl IntoView {
                     </div>
                 </section>
                 <section class="py-10">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-0">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <a href="about">
                                 <div class="h-64 m-5">
