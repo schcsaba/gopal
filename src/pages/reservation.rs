@@ -1,10 +1,12 @@
 use leptos::*;
 use leptos_image::Image;
+use leptos_meta::Html;
 
 #[component]
 pub fn Reservation() -> impl IntoView {
     view! {
         <main class="container mx-auto">
+            <Html lang="fr" />
             <section class="container mx-auto my-20">
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">Sur place ou à emporter ou livraison à domicile</h2>
@@ -53,7 +55,7 @@ pub fn Reservation() -> impl IntoView {
                     </div>
                 </div>
                 <div class="flex items-center justify-center pb-8">
-                    <img class="h-32" src="assets/img/picnic.svg" />
+                    <img alt="Table de pique-nique" class="h-32" src="assets/img/picnic.svg" />
                 </div>
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">"Nos cartes cadeaux !!! 🎁😄"</h2>

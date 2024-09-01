@@ -1,9 +1,11 @@
 use leptos::*;
+use leptos_meta::Html;
 
 #[component]
 pub fn Menu() -> impl IntoView {
     view! {
         <main class="container mx-auto">
+            <Html lang="fr" />
             <section class="mt-20 text-center">
                 <div class="flex justify-center items-center">
                     <img alt="Etagère avec ustensiles de cuisine" src="assets/img/detourCapture.svg" />

@@ -1,10 +1,12 @@
 use leptos::*;
 use leptos_image::Image;
+use leptos_meta::Html;
 
 #[component]
 pub fn About() -> impl IntoView {
     view! {
         <main class="container mx-auto">
+            <Html lang="fr" />
             <section class="mt-20">
                 <h2 class="font-sans font-bold text-4xl pb-8 uppercase tracking-wide text-center">À propos de nous</h2>
                 <p class="text-2xl pb-4">
@@ -41,10 +43,11 @@ pub fn About() -> impl IntoView {
                             width=597
                             height=397
                             quality=85
+                            alt="Les fondateurs"
                         />
                     </div>
                 </div>
-                <iframe class="pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" width="100%" height="1000" frameborder="0"></iframe>
+                <iframe class="pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" width="100%" height="1000" frameborder="0" title="Google Reviews"></iframe>
             </section>
         </main>
     }

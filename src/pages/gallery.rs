@@ -1,6 +1,7 @@
 #[cfg(target_arch = "wasm32")]
 use leptos::html;
 use leptos::*;
+use leptos_meta::Html;
 use serde::{Deserialize, Serialize};
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::closure::Closure;
@@ -36,7 +37,7 @@ pub async fn get_images() -> Result<Vec<Image>, ServerFnError> {
         for (id, entry) in entries.enumerate() {
             if let Ok(entry) = entry {
                 if let Some(filename) = entry.file_name().to_str() {
-                    if filename.ends_with(".jpg") || filename.ends_with(".png") {
+                    if filename.ends_with(".webp") {
                         let aspect_ratio = 1.5;
 
                         images.push(Image {
@@ -122,7 +123,8 @@ pub fn Gallery() -> impl IntoView {
     };
 
     view! {
-        <div class="container mx-auto px-24 py-8">
+        <main class="container mx-auto px-24 py-8">
+            <Html lang="fr" />
             <Suspense
                 fallback=move || view! {
                     <div class="flex justify-center items-center my-8">
@@ -175,6 +177,6 @@ pub fn Gallery() -> impl IntoView {
                     })}
                 </div>
             </Suspense>
-        </div>
+        </main>
     }
 }
