@@ -54,6 +54,8 @@ pub fn Nav() -> impl IntoView {
                     class=("transform-180", move || is_open())
                     class="block lg:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
                     type="button"
+                    id="mobile-menu-button"
+                    aria-label="Mobile menu button"
                   >
                     <svg
                       class="h-6 w-6 fill-current"
