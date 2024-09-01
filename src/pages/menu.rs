@@ -44,7 +44,7 @@ pub fn Menu() -> impl IntoView {
                         <ul>
                             <li class="py-4 mb-4 font-sans font-extrabold">"Lassi (au yaourt vegan, parfum mangue ou rose) 25 cl 4,00 €"</li>
                             <li class="py-4 mb-4 font-sans font-extrabold">"Limonade maison (menthe fraîche, citron vert, gingembre) 25 cl 3,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"San Pellegrino aromatisée 33 c 2,00 €"</li>
+                            <li class="py-4 mb-4 font-sans font-extrabold">"San Pellegrino aromatisée 33 cl 2,00 €"</li>
                             <li class="py-4 mb-4 font-sans font-extrabold">"Bière sans alcool 25 cl 3,00 €"</li>
                             <li class="py-4 mb-4 font-sans font-extrabold">"Tisane 20 cl 2,00 €"</li>
                             <li class="py-4 mb-4 font-sans font-extrabold">"Eau pétillante 33 cl 2,00 €"</li>

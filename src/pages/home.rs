@@ -112,7 +112,7 @@ pub fn Home() -> impl IntoView {
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
                                 <p>
-                                    Participez à nos soirées kirtan chaque vendredi de 19h00 à 20h30, et laissez-vous emporter par une
+                                    Participez à nos soirées kirtan (dans la salle de yoga du Gopal) chaque vendredi de 19h00 à 20h30, et laissez-vous emporter par une
                                     méditation musicale apaisante dans une ambiance conviviale.
                                 </p>
                             </div>
