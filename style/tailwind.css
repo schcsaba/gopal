@@ -7,6 +7,7 @@
         local("Daikon"),
         url("../assets/fonts/Pepper-Type-Daikon-ExtraLight.woff2")
             format("woff2");
+    font-display: swap;
 }
 
 @tailwind utilities;

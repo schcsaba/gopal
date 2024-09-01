@@ -29,6 +29,9 @@ pub fn App() -> impl IntoView {
         // sets the document title
         <Title text="Le Gopal Tours"/>
 
+        <Meta name="description" content="Le Gopal Tours - Restaurant Végétarien & Vegan."/>
+        <Meta name="keywords" content="végétarien, vegan, restaurant, gopal, krishna"/>
+
         // content for this welcome page
         <Router fallback=|| {
             let mut outside_errors = Errors::default();

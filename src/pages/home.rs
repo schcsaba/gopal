@@ -1,10 +1,12 @@
 use leptos::*;
 use leptos_image::Image;
+use leptos_meta::Html;
 
 #[component]
 pub fn Home() -> impl IntoView {
     view! {
             <main class="container mx-auto">
+                <Html lang="fr" />
                 <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
@@ -26,7 +28,7 @@ pub fn Home() -> impl IntoView {
                                 aussi bien inspirée des saveurs indiennes que des bons petits plats de chez nous.
                             </p>
                             <button class="px-3 py-4">
-                                <a class="px-3 py-4 bg-black text-white font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
+                                <a class="px-3 py-4 bg-black text-white text-nowrap text-2xl font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
                                 href="menu">Aller au menu</a>
                             </button>
                         </div>
@@ -143,7 +145,7 @@ pub fn Home() -> impl IntoView {
                 </section>
                 <section
                     class="my-10 bg-fixed bg-center object-contain overflow-x-visible w-full"
-                    style="background-image: url('assets/img/affection.jpg')"
+                    style="background-image: url('assets/img/affection.webp')"
                 >
                     <div class="container px-4 mx-auto">
                         <div class="pt-20 pb-24 px-8 md:px-16 rounded">
@@ -173,6 +175,7 @@ pub fn Home() -> impl IntoView {
                                             allowfullscreen=""
                                             loading="lazy"
                                             referrerpolicy="no-referrer-when-downgrade"
+                                            title="Google Map"
                                         >
                                         </iframe>
                                     </div>
@@ -181,7 +184,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                     </div>
                 </section>
-                <iframe class="pb-6" src="https://2bc10f5dd2994533866aac1fe6e8e6fb.elf.site" width="100%" height="700" frameborder="0"></iframe>
+                <iframe class="pb-6" src="https://2bc10f5dd2994533866aac1fe6e8e6fb.elf.site" width="100%" height="700" frameborder="0" title="Google Reviews"></iframe>
             </main>
     }
 }
