@@ -7,6 +7,7 @@ pub fn Menu() -> impl IntoView {
         <main class="container mx-auto">
             <Html lang="fr" />
             <section class="mt-20 text-center">
+                <h2 class="text-4xl tracking-widest uppercase pb-5">Notre carte</h2>
                 <div class="flex justify-center items-center">
                     <img alt="Etagère avec ustensiles de cuisine" src="assets/img/detourCapture.svg" />
                 </div>

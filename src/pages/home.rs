@@ -22,15 +22,13 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
-                            <h2 class="text-4xl tracking-widest uppercase pb-5" data-scroll>Découvrez notre menu</h2>
-                            <p class="text-2xl mb-12 p-5" data-scroll>
+                            <h2 class="text-4xl tracking-widest uppercase pb-5">Découvrez notre menu</h2>
+                            <p class="text-2xl mb-12 p-5">
                                 Au Gopal venez découvrir notre cuisine végétarienne et végane Internationale,
                                 aussi bien inspirée des saveurs indiennes que des bons petits plats de chez nous.
                             </p>
-                            <button class="px-3 py-4">
-                                <a class="px-3 py-4 bg-black text-white text-nowrap text-2xl font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
+                            <a class="px-3 py-4 bg-black text-white text-nowrap text-2xl font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
                                 href="menu">Aller au menu</a>
-                            </button>
                         </div>
                     </div>
                 </section>
@@ -184,7 +182,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                     </div>
                 </section>
-                <iframe class="pb-6" src="https://2bc10f5dd2994533866aac1fe6e8e6fb.elf.site" width="100%" height="700" frameborder="0" title="Google Reviews"></iframe>
+                <iframe class="w-full h-screen pb-6" src="https://2bc10f5dd2994533866aac1fe6e8e6fb.elf.site" title="Google Reviews"></iframe>
             </main>
     }
 }

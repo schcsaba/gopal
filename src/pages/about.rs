@@ -47,7 +47,7 @@ pub fn About() -> impl IntoView {
                         />
                     </div>
                 </div>
-                <iframe class="pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" width="100%" height="1000" frameborder="0" title="Google Reviews"></iframe>
+                <iframe class="w-full h-screen pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" title="Google Reviews"></iframe>
             </section>
         </main>
     }
