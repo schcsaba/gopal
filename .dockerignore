@@ -1,1 +1,24 @@
+# Rust build artifacts
+/target/
+pkg
+
+# Rust formatting backup files
+**/*.rs.bk
+
+# Node.js related files and directories
+node_modules/
+test-results/
+end2end/playwright-report/
+playwright/.cache/
+
+# macOS system files
 .DS_Store
+**/.DS_Store
+
+# Git-related files
+.git
+.gitignore
+
+# Docker-related files
+Dockerfile
+.dockerignore
