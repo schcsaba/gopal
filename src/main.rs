@@ -28,7 +28,7 @@ async fn main() {
 
     let state = AppState {
         leptos_options,
-        optimizer: ImageOptimizer::new("/cache/image", root, 1),
+        optimizer: ImageOptimizer::new("/site/cache/image", root, 1),
     };
 
     // build our application with a route
