@@ -31,6 +31,8 @@ pub fn App() -> impl IntoView {
 
         <Meta name="description" content="Le Gopal Tours - Restaurant Végétarien & Vegan."/>
         <Meta name="keywords" content="végétarien, vegan, restaurant, gopal, krishna"/>
+        <Link rel="apple-touch-icon" href="logo192.png" />
+        <Link rel="manifest" href="manifest.json" />
 
         // content for this welcome page
         <Router fallback=|| {
