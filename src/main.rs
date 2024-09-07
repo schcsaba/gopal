@@ -1,11 +1,11 @@
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
-    use axum::Router;
+    use axum::{routing::post, Router};
     use gopal::app::*;
     use gopal::fileserv::file_and_error_handler;
     use leptos::*;
-    use leptos_axum::{generate_route_list, LeptosRoutes};
+    use leptos_axum::{generate_route_list, handle_server_fns, LeptosRoutes};
     use leptos_image::*;
 
     // Composite App State with the optimizer and leptos options.
@@ -33,6 +33,7 @@ async fn main() {
 
     // build our application with a route
     let app = Router::new()
+        .route("/api/*fn_name", post(handle_server_fns))
         .image_cache_route(&state)
         .leptos_routes_with_context(&state, routes, state.optimizer.provide_context(), App)
         .fallback(file_and_error_handler)
