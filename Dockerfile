@@ -39,7 +39,6 @@ RUN apt-get update -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# -- NB: update binary name from "leptos_start" to match your app name in Cargo.toml --
 # Copy the server binary to the /app directory
 COPY --from=builder /app/target/release/gopal /app/
 
@@ -49,13 +48,15 @@ COPY --from=builder /app/target/site /app/site
 # Copy Cargo.toml if it’s needed at runtime
 COPY --from=builder /app/Cargo.toml /app/
 
+RUN mkdir -p /app/site/cache/image
+
 # Set any required env variables and
 ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:8080"
 ENV LEPTOS_SITE_ROOT="site"
 ENV GALLERY_PATH="/app/site/assets/img/gallery"
+ENV IMAGE_OPTIMIZER_API_HANDLER_PATH="/app/site/cache/image"
 EXPOSE 8080
 
-# -- NB: update binary name from "leptos_start" to match your app name in Cargo.toml --
 # Run the server
 CMD ["/app/gopal"]

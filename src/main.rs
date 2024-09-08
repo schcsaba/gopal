@@ -26,9 +26,11 @@ async fn main() {
     let routes = generate_route_list(App);
     let root = leptos_options.site_root.clone();
 
+    let api_handler_path = std::env::var("IMAGE_OPTIMIZER_API_HANDLER_PATH")
+        .unwrap_or_else(|_| "/cache/image".to_string());
     let state = AppState {
         leptos_options,
-        optimizer: ImageOptimizer::new("/site/cache/image", root, 1),
+        optimizer: ImageOptimizer::new(api_handler_path, root, 1),
     };
 
     // build our application with a route
