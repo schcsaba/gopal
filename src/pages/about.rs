@@ -1,9 +1,11 @@
 use leptos::*;
+use leptos_image::provide_image_context;
 use leptos_image::Image;
 use leptos_meta::Html;
 
 #[component]
 pub fn About() -> impl IntoView {
+    provide_image_context();
     view! {
         <main class="container mx-auto">
             <Html lang="fr" />
