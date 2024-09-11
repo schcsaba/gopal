@@ -21,12 +21,12 @@ pub fn Nav() -> impl IntoView {
                     {
                         move || if is_home() {
                             view! {
-                                <img alt="Gopal Logo" class="h-20 lg:h-32" src="assets/img/gopal-logo-white.svg" />
+                                <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-white.svg" />
                             }.into_any()
                         } else {
                             view! {
                                 <a href="/">
-                                    <img alt="Gopal Logo" class="h-20 lg:h-32" src="assets/img/gopal-logo-black.svg" />
+                                    <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-black.svg" />
                                 </a>
                             }.into_any()
                         }
@@ -35,13 +35,13 @@ pub fn Nav() -> impl IntoView {
                 <div class="hidden lg:block">
                     <ul class="flex">
                         <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="menu">Menu</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="/menu">Menu</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="reservation">Réservation</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="/reservation">Réservation</a>
                         </li>
                         <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="contact">Contact</a>
+                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="/contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -120,7 +120,7 @@ pub fn Nav() -> impl IntoView {
                             class=("text-gray-200", move || is_menu())
                             class=("text-gray-600", move || !is_menu())
                             class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
-                            href="menu"
+                            href="/menu"
                         >
                             Menu
                         </a>
@@ -133,7 +133,7 @@ pub fn Nav() -> impl IntoView {
                             class=("text-gray-200", move || is_reservation())
                             class=("text-gray-600", move || !is_reservation())
                             class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
-                            href="reservation"
+                            href="/reservation"
                         >
                             Réservation
                         </a>
@@ -146,7 +146,7 @@ pub fn Nav() -> impl IntoView {
                             class=("text-gray-200", move || is_contact())
                             class=("text-gray-600", move || !is_contact())
                             class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
-                            href="contact"
+                            href="/contact"
                         >
                             Contact
                         </a>

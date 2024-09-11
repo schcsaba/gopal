@@ -57,7 +57,7 @@ pub fn Reservation() -> impl IntoView {
                     </div>
                 </div>
                 <div class="flex items-center justify-center pb-8">
-                    <img alt="Table de pique-nique" class="h-32" src="assets/img/picnic.svg" />
+                    <img alt="Table de pique-nique" class="h-32" src="/assets/img/picnic.svg" />
                 </div>
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">"Nos cartes cadeaux !!! 🎁😄"</h2>
@@ -67,7 +67,7 @@ pub fn Reservation() -> impl IntoView {
                 <div class="flex items-center justify-center">
                     <div class="h-128">
                         <Image
-                            src="assets/img/giftcard.jpg"
+                            src="/assets/img/giftcard.jpg"
                             blur=true
                             width=827
                             height=591

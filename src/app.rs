@@ -8,6 +8,8 @@ use crate::pages::home::Home;
 use crate::pages::menu::Menu;
 use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
+#[cfg(feature = "ssr")]
+use leptos::logging::log;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
@@ -29,13 +31,22 @@ pub fn App() -> impl IntoView {
 
         <Meta name="description" content="Le Gopal Tours - Restaurant Végétarien & Vegan."/>
         <Meta name="keywords" content="végétarien, vegan, restaurant, gopal, krishna"/>
-        <Link rel="apple-touch-icon" href="logo192.png" />
-        <Link rel="manifest" href="manifest.json" />
+        <Link rel="apple-touch-icon" href="/logo192.png" />
+        <Link rel="manifest" href="/manifest.json" />
 
         // content for this welcome page
         <Router fallback=|| {
             let mut outside_errors = Errors::default();
             outside_errors.insert_with_default_key(AppError::NotFound);
+
+           // Get the current location
+           #[cfg(feature = "ssr")]
+           let location = use_location();
+
+           // Log the 404 error with the requested path
+           #[cfg(feature = "ssr")]
+           log!("404 Error: Not Found - Requested Path: {}", location.pathname.get());
+
             view! {
                 <ErrorTemplate outside_errors/>
             }

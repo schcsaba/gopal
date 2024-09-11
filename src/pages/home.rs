@@ -14,7 +14,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
                             <div class="object-fill">
                                 <Image
-                                    src="assets/img/menu.jpg"
+                                    src="/assets/img/menu.jpg"
                                     blur=true
                                     width=580
                                     height=480
@@ -30,17 +30,17 @@ pub fn Home() -> impl IntoView {
                                 aussi bien inspirée des saveurs indiennes que des bons petits plats de chez nous.
                             </p>
                             <a class="px-3 py-4 bg-black text-white text-nowrap text-2xl font-sans uppercase tracking-widest border hover:text-black hover:bg-white hover:border-black transition duration-300"
-                                href="menu">Aller au menu</a>
+                                href="/menu">Aller au menu</a>
                         </div>
                     </div>
                 </section>
                 <section class="py-10">
                     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 divide-y-0">
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="about">
+                            <a href="/about">
                                 <div class="h-64 m-5">
                                     <Image
-                                        src="assets/img/about.jpg"
+                                        src="/assets/img/about.jpg"
                                         blur=true
                                         width=270
                                         height=270
@@ -49,7 +49,7 @@ pub fn Home() -> impl IntoView {
                                     />
                                 </div>
                             </a>
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="about">À propos de nous</a></h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="/about">À propos de nous</a></h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Créé à Tours en Novembre 2019, le Gopal vous propose de venir déguster une cuisine 100% végétarienne
@@ -58,10 +58,10 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="menu">
+                            <a href="/menu">
                                 <div class="h-64 m-5">
                                     <Image
-                                        src="assets/img/specialities.jpg"
+                                        src="/assets/img/specialities.jpg"
                                         blur=true
                                         width=270
                                         height=270
@@ -70,7 +70,7 @@ pub fn Home() -> impl IntoView {
                                     />
                                 </div>
                             </a>
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="menu">Spécialités</a></h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="/menu">Spécialités</a></h2>
                             <div class="px-20 text-center">
                                 <p>
                                     Découvrez nos spécialités végétariennes et véganes, alliant cuisine traditionnelle et inspirations
@@ -80,10 +80,10 @@ pub fn Home() -> impl IntoView {
                             </div>
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
-                            <a href="gallery">
+                            <a href="/gallery">
                                 <div class="h-64 m-5">
                                     <Image
-                                        src="assets/img/gallery.png"
+                                        src="/assets/img/gallery.png"
                                         blur=true
                                         width=270
                                         height=270
@@ -92,7 +92,7 @@ pub fn Home() -> impl IntoView {
                                     />
                                 </div>
                             </a>
-                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="gallery">Galerie</a></h2>
+                            <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="/gallery">Galerie</a></h2>
                             <div class="px-20 text-center">
                                 <p>
                                     "Explorez notre galerie pour un aperçu en images de nos délicieuses préparations culinaires
@@ -103,7 +103,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <div class="h-64 m-5">
                                 <Image
-                                    src="assets/img/events.png"
+                                    src="/assets/img/events.png"
                                     blur=true
                                     width=270
                                     height=270
@@ -132,7 +132,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
                             <div class="object-fill">
                                 <Image
-                                    src="assets/img/good_vibes.jpg"
+                                    src="/assets/img/good_vibes.jpg"
                                     blur=true
                                     width=580
                                     height=480
@@ -145,7 +145,7 @@ pub fn Home() -> impl IntoView {
                 </section>
                 <section
                     class="my-10 bg-fixed bg-center object-contain overflow-x-visible w-full"
-                    style="background-image: url('assets/img/affection.webp')"
+                    style="background-image: url('/assets/img/affection.webp')"
                 >
                     <div class="container px-4 mx-auto">
                         <div class="pt-20 pb-24 px-8 md:px-16 rounded">
@@ -161,7 +161,7 @@ pub fn Home() -> impl IntoView {
                                         </p>
                                         <a
                                             class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"
-                                            href="reservation">Réservation
+                                            href="/reservation">Réservation
                                         </a>
                                     </div>
                                 </div>
