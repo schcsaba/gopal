@@ -105,7 +105,6 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-white", move || is_home())
                             class=("hover:text-gray-200", move || !is_home())
-                            class=("hover:text-underline", move || !is_home())
                             class="inline-block py-2 px-4 no-underline uppercase"
                             href="/"
                         >
@@ -119,7 +118,7 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_menu())
                             class=("text-gray-600", move || !is_menu())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
+                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
                             href="/menu"
                         >
                             Menu
@@ -132,7 +131,7 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_reservation())
                             class=("text-gray-600", move || !is_reservation())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
+                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
                             href="/reservation"
                         >
                             Réservation
@@ -145,7 +144,7 @@ pub fn Nav() -> impl IntoView {
                             }
                             class=("text-gray-200", move || is_contact())
                             class=("text-gray-600", move || !is_contact())
-                            class="inline-block no-underline hover:text-gray-200 hover:text-underline py-2 px-4 uppercase"
+                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
                             href="/contact"
                         >
                             Contact
