@@ -95,9 +95,13 @@ pub fn Nav() -> impl IntoView {
             <div
                 class=("max-h-0", move || !is_open())
                 class=("max-h-screen", move || is_open())
-                class="w-full h-full z-50 lg:hidden lg:flex lg:items-center lg:w-auto text-right overflow-hidden transition-all duration-400 ease-in-out"
+                class="w-full z-50 lg:hidden flex justify-end w-auto overflow-hidden transition-all duration-400 ease-in-out"
             >
-                <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-start flex-1 items-center">
+                <ul
+                    class=("bg-lime-200/65", move || is_home())
+                    class=("rounded-3xl", move || is_home())
+                    class="pt-6 pt-0 list-reset flex flex-col items-end"
+                >
                     <li class="mr-3">
                         <a
                             on:click=move |_| {
