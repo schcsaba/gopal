@@ -34,7 +34,7 @@ pub fn Reservation() -> impl IntoView {
                             <p class="font-sans font-bold text-2xl pb-2">
                             Mercredi
                             </p>
-                            <p class="text-xl">12h à 14h et 19h à 21h30</p>
+                            <p class="text-xl">12h à 14h</p>
                         </div>
                         <div>
                             <p class="font-sans font-bold text-2xl pb-2">
