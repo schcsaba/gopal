@@ -11,7 +11,11 @@ where
     F: Fn() -> IV,
     IV: IntoView,
 {
-    let on_close = move |_| {
+    let on_close_click = move |_| {
+        set_if_show_modal(false);
+    };
+
+    let on_close_tap = move |_| {
         set_if_show_modal(false);
     };
 
@@ -20,7 +24,7 @@ where
     };
 
     view! {
-        <div on:click=on_close class="relative z-30" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div on:click=on_close_click on:touchend=on_close_tap class="relative z-30" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
@@ -38,7 +42,7 @@ where
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button on:click=on_close type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Fermer</button>
+                <button on:click=on_close_click on:touchend=on_close_tap type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Fermer</button>
               </div>
             </div>
           </div>
