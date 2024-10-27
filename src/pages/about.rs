@@ -1,11 +1,8 @@
 use leptos::*;
-use leptos_image::provide_image_context;
-use leptos_image::Image;
 use leptos_meta::Html;
 
 #[component]
 pub fn About() -> impl IntoView {
-    provide_image_context();
     view! {
         <main class="container mx-auto">
             <Html lang="fr" />
@@ -39,14 +36,7 @@ pub fn About() -> impl IntoView {
                 </p>
                 <div class="flex items-center justify-center">
                     <div class="h-128 pb-6">
-                        <Image
-                            src="/assets/img/founders.png"
-                            blur=true
-                            width=597
-                            height=397
-                            quality=85
-                            alt="Les fondateurs"
-                        />
+                        <img width=597 height=397 alt="Les fondateurs" src="/assets/img/founders.webp" />
                     </div>
                 </div>
                 <iframe class="w-full h-screen pb-6" src="https://81e3c7a639fc4faf942c0dbec787942f.elf.site" title="Google Reviews"></iframe>

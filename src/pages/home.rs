@@ -1,11 +1,8 @@
 use leptos::*;
-use leptos_image::provide_image_context;
-use leptos_image::Image;
 use leptos_meta::Html;
 
 #[component]
 pub fn Home() -> impl IntoView {
-    provide_image_context();
     view! {
             <main class="container mx-auto">
                 <Html lang="fr" />
@@ -13,14 +10,7 @@ pub fn Home() -> impl IntoView {
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
                             <div class="object-fill">
-                                <Image
-                                    src="/assets/img/menu.jpg"
-                                    blur=true
-                                    width=580
-                                    height=480
-                                    quality=85
-                                    alt="Découvrez notre menu"
-                                />
+                                <img width=580 height=480 alt="Découvrez notre menu" src="/assets/img/menu.webp" />
                             </div>
                         </div>
                         <div class="flex flex-col p-5 items-center text-center justify-center w-full lg:w-1/2">
@@ -39,14 +29,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <a href="/about">
                                 <div class="h-64 m-5">
-                                    <Image
-                                        src="/assets/img/about.jpg"
-                                        blur=true
-                                        width=270
-                                        height=270
-                                        quality=85
-                                        alt="À propos de nous"
-                                    />
+                                    <img width=270 height=270 alt="À propos de nous" src="/assets/img/about.webp" />
                                 </div>
                             </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2 text-center"><a href="/about">À propos de nous</a></h2>
@@ -60,14 +43,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <a href="/menu">
                                 <div class="h-64 m-5">
-                                    <Image
-                                        src="/assets/img/specialities.jpg"
-                                        blur=true
-                                        width=270
-                                        height=270
-                                        quality=85
-                                        alt="Spécialités"
-                                    />
+                                    <img width=270 height=270 alt="Spécialités" src="/assets/img/specialities.webp" />
                                 </div>
                             </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="/menu">Spécialités</a></h2>
@@ -82,14 +58,7 @@ pub fn Home() -> impl IntoView {
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <a href="/gallery">
                                 <div class="h-64 m-5">
-                                    <Image
-                                        src="/assets/img/gallery.png"
-                                        blur=true
-                                        width=270
-                                        height=270
-                                        quality=85
-                                        alt="Galerie"
-                                    />
+                                    <img width=270 height=270 alt="Galerie" src="/assets/img/gallery.webp" />
                                 </div>
                             </a>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2"><a href="/gallery">Galerie</a></h2>
@@ -102,14 +71,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex flex-col items-center justify-center mb-4 lg:mb-0">
                             <div class="h-64 m-5">
-                                <Image
-                                    src="/assets/img/events.png"
-                                    blur=true
-                                    width=270
-                                    height=270
-                                    quality=85
-                                    alt="Evénements"
-                                />
+                                <img width=270 height=270 alt="Evénements" src="/assets/img/events.webp" />
                             </div>
                             <h2 class="font-sans text-3xl tracking-widest uppercase mb-2">Evénements</h2>
                             <div class="px-20 text-center">
@@ -131,14 +93,7 @@ pub fn Home() -> impl IntoView {
                         </div>
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">
                             <div class="object-fill">
-                                <Image
-                                    src="/assets/img/good_vibes.jpg"
-                                    blur=true
-                                    width=580
-                                    height=480
-                                    quality=85
-                                    alt="Que des bonnes vibration"
-                                />
+                                <img width=580 height=480 alt="Que des bonnes vibrations" src="/assets/img/good_vibes.webp" />
                             </div>
                         </div>
                     </div>

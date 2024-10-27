@@ -1,11 +1,8 @@
 use leptos::*;
-use leptos_image::provide_image_context;
-use leptos_image::Image;
 use leptos_meta::Html;
 
 #[component]
 pub fn Reservation() -> impl IntoView {
-    provide_image_context();
     view! {
         <main class="container mx-auto">
             <Html lang="fr" />
@@ -66,14 +63,7 @@ pub fn Reservation() -> impl IntoView {
                 </div>
                 <div class="flex items-center justify-center">
                     <div class="h-128">
-                        <Image
-                            src="/assets/img/giftcard.jpg"
-                            blur=true
-                            width=827
-                            height=591
-                            quality=85
-                            alt="Carte cadeau"
-                        />
+                        <img width=827 height=591 alt="Carte cadeau" src="/assets/img/giftcard.webp" />
                     </div>
                 </div>
             </section>

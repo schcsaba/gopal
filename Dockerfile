@@ -55,7 +55,6 @@ ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:8080"
 ENV LEPTOS_SITE_ROOT="site"
 ENV GALLERY_PATH="/app/site/assets/img/gallery"
-ENV IMAGE_OPTIMIZER_API_HANDLER_PATH="/app/site/cache/image"
 EXPOSE 8080
 
 # Run the server
