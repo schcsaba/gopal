@@ -20,7 +20,7 @@ where
     };
 
     view! {
-        <div on:click=on_close class="relative z-30 hover:cursor-pointer" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div on:click=on_close class="relative z-30" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
