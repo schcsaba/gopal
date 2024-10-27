@@ -1,5 +1,6 @@
 use crate::elements::footer::Footer;
 use crate::elements::header::Header;
+use crate::elements::modal::Modal;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::pages::about::About;
 use crate::pages::contact::Contact;
@@ -18,6 +19,16 @@ use leptos_router::*;
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+
+    let (if_show_modal, set_if_show_modal) = create_signal(true);
+
+    provide_context(set_if_show_modal);
+
+    let content = || {
+        view! {
+            <img width=720 height=900 alt="Cinquième anniversaire" src="/assets/img/fifth_anniversary.webp" />
+        }
+    };
 
     view! {
 
@@ -53,6 +64,13 @@ pub fn App() -> impl IntoView {
             .into_view()
         }>
             <Header/>
+            <Show when=move || { if_show_modal() }>
+                <Modal
+                    set_if_show_modal
+                    title="Le Gopal fête ses 5 ans le 1er Novembre! 🎉☺️".to_string()
+                    content
+                />
+            </Show>
             <Routes>
                 <Route path="" view=Home/>
                 <Route path="menu" view=Menu/>

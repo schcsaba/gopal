@@ -10,6 +10,9 @@ pub fn Nav() -> impl IntoView {
     let is_reservation = move || location.pathname.get() == "/reservation";
     let is_contact = move || location.pathname.get() == "/contact";
 
+    let set_if_show_modal =
+        use_context::<WriteSignal<bool>>().expect("to have found the setter provided");
+
     view! {
         <nav
             class=("text-white", move || is_home())
@@ -32,64 +35,69 @@ pub fn Nav() -> impl IntoView {
                         }
                     }
                 </div>
-                <div class="hidden lg:block">
-                    <ul class="flex">
-                        <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="/menu">Menu</a>
-                        </li>
-                        <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="/reservation">Réservation</a>
-                        </li>
-                        <li class="px-4 py-4">
-                            <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="/contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="block lg:hidden">
-                  <button
-                    on:click=move |_| {
-                        set_is_open.update(|o| *o = !*o);
-                    }
-                    class:transition=move || is_open()
-                    class=("transform-180", move || is_open())
-                    class="block lg:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
-                    type="button"
-                    id="mobile-menu-button"
-                    aria-label="Mobile menu button"
-                  >
-                    <svg
-                      class="h-6 w-6 fill-current"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                    {move || if is_open() {
-                        view! {
-                            <path
-                                clip-rule="evenodd"
-                                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                                fill-rule="evenodd"
-                                fill=move || if is_home() {
-                                    "white"
-                                } else {
-                                    "black"
+                <div class="flex">
+                    <button on:click=move |_| set_if_show_modal(true) class="animate-bounce text-violet-700 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">
+                        "Annonce"
+                    </button>
+                    <div class="hidden lg:block">
+                        <ul class="flex">
+                            <li class="px-4 py-4">
+                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="/menu">Menu</a>
+                            </li>
+                            <li class="px-4 py-4">
+                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="/reservation">Réservation</a>
+                            </li>
+                            <li class="px-4 py-4">
+                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="/contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block lg:hidden">
+                        <button
+                            on:click=move |_| {
+                                set_is_open.update(|o| *o = !*o);
+                            }
+                            class:transition=move || is_open()
+                            class=("transform-180", move || is_open())
+                            class="block lg:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
+                            type="button"
+                            id="mobile-menu-button"
+                            aria-label="Mobile menu button"
+                        >
+                            <svg
+                            class="h-6 w-6 fill-current"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            {move || if is_open() {
+                                view! {
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                                        fill-rule="evenodd"
+                                        fill=move || if is_home() {
+                                            "white"
+                                        } else {
+                                            "black"
+                                        }
+                                    />
                                 }
-                            />
-                        }
-                    } else {
-                        view! {
-                            <path
-                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                                fill-rule="evenodd"
-                                fill=move || if is_home() {
-                                    "white"
-                                } else {
-                                    "black"
+                            } else {
+                                view! {
+                                    <path
+                                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                                        fill-rule="evenodd"
+                                        fill=move || if is_home() {
+                                            "white"
+                                        } else {
+                                            "black"
+                                        }
+                                    />
                                 }
-                            />
-                        }
-                    }}
-                    </svg>
-                  </button>
+                            }}
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div
