@@ -20,7 +20,7 @@ pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
 
-    let (if_show_modal, set_if_show_modal) = create_signal(true);
+    let (if_show_modal, set_if_show_modal) = create_signal(false);
 
     provide_context(set_if_show_modal);
 
