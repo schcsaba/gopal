@@ -39,7 +39,6 @@ where
 
     let stop_touch_propagation = move |ev: TouchEvent| {
         ev.stop_propagation();
-        ev.prevent_default();
     };
 
     view! {
