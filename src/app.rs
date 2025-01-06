@@ -26,17 +26,9 @@ pub fn App() -> impl IntoView {
 
     let content = || {
         view! {
-            <h4 class="text-xl text-center font-bold leading-6 text-gray-900 mb-2">
-                "Menu de Noël à emporter pour le réveillon, à commander dans "<span class="hover:text-red-500"><a href="https://gopal.sumupstore.com/" target="_blank" rel="noreferrer noopener" class="underline hover:decoration-red-500">"notre boutique"</a>" >>"</span>
-            </h4>
-            <img width=720 height=900 alt="Menu de Noël" src="/assets/img/christmas_menu.webp" />
-            <br></br>
-            <p class="text-xl font-bold leading-6 text-gray-900 mb-2 text-red-500">
-                "Dates d'ouverture du Gopal pour les fêtes"
-            </p>
             <ul class="text-lg text-gray-900">
                 <li class="mb-2"><span class="font-bold">"Lundi 23 Décembre 16h à 19h et mardi 24 Décembre 11h à 14h :"</span>" ouvert uniquement pour les commandes de menus de Noël à emporter faites sur réservations."</li>
-                <li class="mb-2"><span class="font-bold">"Mardi 25 Décembre :"</span>" fermé."</li>
+                <li class="mb-2"><span class="font-bold">"Mercredi 25 Décembre :"</span>" fermé."</li>
                 <li class="mb-2"><span class="font-bold">"Jeudi 26 à samedi 28 Décembre :"</span>" OUVERT aux horaires habituels."</li>
                 <li>"Fermeture du 29 Décembre au 6 Janvier pour vacances d'hiver."</li>
             </ul>
@@ -80,7 +72,7 @@ pub fn App() -> impl IntoView {
             <Show when=move || { if_show_modal() }>
                 <Modal
                     set_if_show_modal
-                    title="".to_string()
+                    title="Dates d'ouverture du Gopal pour les fêtes".to_string()
                     content
                 />
             </Show>
