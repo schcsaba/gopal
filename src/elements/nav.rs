@@ -15,7 +15,7 @@ pub fn Nav() -> impl IntoView {
 
     let if_show_announcement_button = std::env::var("IF_SHOW_ANNOUNCEMENT_BUTTON")
         .map(|v| v.parse::<bool>().unwrap_or(false))
-        .unwrap_or(true);
+        .unwrap_or(false);
 
     view! {
         <nav
