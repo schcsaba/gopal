@@ -25,6 +25,8 @@ pub fn Contact() -> impl IntoView {
                     </div>
                     <div class="flex flex-col p-2 w-full lg:w-1/2">
                         <h2 class="font-sans font-bold text-2xl pb-4 uppercase tracking-wide">"Heures d'ouverture :"</h2>
+                        <p class="text-red-500 font-bold">Le Gopal sera exceptionnellement fermé le Jeudi 13 Mars 2025 !</p>
+                        <p class="text-red-500 font-bold">Merci pour votre compréhension !</p>
                         <p class="text-xl pb-2">Mardi : 12h à 14h</p>
                         <p class="text-xl pb-2">Mercredi : 12h à 14h</p>
                         <p class="text-xl pb-2">Jeudi : 12h à 14h</p>
