@@ -28,6 +28,9 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
+ENV LEPTOS_TAILWIND_VERSION=v4.0.0
+RUN npm install tailwindcss
+
 # Build the app
 RUN cargo leptos build --release -vv
 

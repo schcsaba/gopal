@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @font-face {
     font-family: "Daikon";
@@ -9,5 +9,3 @@
             format("woff2");
     font-display: swap;
 }
-
-@tailwind utilities;
