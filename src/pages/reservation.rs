@@ -9,8 +9,6 @@ pub fn Reservation() -> impl IntoView {
             <section class="container mx-auto my-20">
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-4xl pt-6 pb-6 uppercase tracking-wide">Réservez une table</h2>
-                    <p class="text-red-500 font-bold">Le Gopal sera exceptionnellement fermé le Jeudi 13 Mars 2025 !</p>
-                    <p class="text-red-500 font-bold">Merci pour votre compréhension !</p>
                     <iframe class="pb-6" src="https://widget.thefork.com/60d93c62-f1bb-412e-9206-93ab3a1900cb" allow="payment *" title="TheFork" style="width: 100%; min-height: 800px; border: none; overflow: scroll;"></iframe>
                     <h2 class="font-sans font-bold text-3xl pb-6 uppercase tracking-wide">Sur place ou à emporter ou livraison à domicile</h2>
                     <p class="text-2xl pb-4">Livraison à domicile : <span class="underline decoration-1 underline-offset-2"><a href="https://www.frerestoque.fr/shop/angers-centre-ville/gopal" target="_blank" rel="noreferrer">Cliquez ici</a></span></p>
