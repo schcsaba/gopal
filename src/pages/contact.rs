@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn Contact() -> impl IntoView {
     view! {
         <main class="container mx-auto">
-            <Html lang="fr" />
             <section class="pt-20">
                 <div class="flex flex-wrap md:flex-nowrap w-full p-2">
                     <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">

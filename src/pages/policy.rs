@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn Policy() -> impl IntoView {
     view! {
             <main class="container mx-auto">
-                <Html lang="fr" />
                 <section class="py-20">
                     <div class="p-5">
                         <h2 class="text-4xl tracking-widest uppercase pb-5">Mentions légales et politique de confidentialité</h2>

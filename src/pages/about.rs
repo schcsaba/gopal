@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn About() -> impl IntoView {
     view! {
         <main class="container mx-auto">
-            <Html lang="fr" />
             <section class="mt-20">
                 <h2 class="font-sans font-bold text-4xl pb-8 uppercase tracking-wide text-center">À propos de nous</h2>
                 <p class="text-2xl pb-4">

@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn Reservation() -> impl IntoView {
     view! {
         <main class="container mx-auto">
-            <Html lang="fr" />
             <section class="container mx-auto my-20">
                 <div class="text-center">
                     <h2 class="font-sans font-bold text-4xl pt-6 pb-6 uppercase tracking-wide">Réservez une table</h2>

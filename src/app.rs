@@ -11,25 +11,57 @@ use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
 #[cfg(feature = "ssr")]
 use leptos::logging::log;
-use leptos::*;
-use leptos_meta::*;
-use leptos_router::*;
+use leptos::prelude::*;
+use leptos_meta::{provide_meta_context, Link, Meta, MetaTags, Stylesheet, Title};
+use leptos_router::components::{Route, Router, Routes};
+#[cfg(feature = "ssr")]
+use leptos_router::hooks::use_location;
+use leptos_router::path;
+
+pub fn shell(options: LeptosOptions) -> impl IntoView {
+    view! {
+        <!DOCTYPE html>
+        <html lang="fr">
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <AutoReload options=options.clone() />
+                <HydrationScripts options />
+                <MetaTags />
+            </head>
+            <body>
+                <App />
+            </body>
+        </html>
+    }
+}
 
 #[component]
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
 
-    let (if_show_modal, set_if_show_modal) = create_signal(false);
+    let (if_show_modal, set_if_show_modal) = signal(false);
 
     provide_context(set_if_show_modal);
 
     let content = || {
         view! {
             <ul class="text-lg text-gray-900">
-                <li class="mb-2"><span class="font-bold">"Lundi 23 Décembre 16h à 19h et mardi 24 Décembre 11h à 14h :"</span>" ouvert uniquement pour les commandes de menus de Noël à emporter faites sur réservations."</li>
-                <li class="mb-2"><span class="font-bold">"Mercredi 25 Décembre :"</span>" fermé."</li>
-                <li class="mb-2"><span class="font-bold">"Jeudi 26 à samedi 28 Décembre :"</span>" OUVERT aux horaires habituels."</li>
+                <li class="mb-2">
+                    <span class="font-bold">
+                        "Lundi 23 Décembre 16h à 19h et mardi 24 Décembre 11h à 14h :"
+                    </span>
+                    " ouvert uniquement pour les commandes de menus de Noël à emporter faites sur réservations."
+                </li>
+                <li class="mb-2">
+                    <span class="font-bold">"Mercredi 25 Décembre :"</span>
+                    " fermé."
+                </li>
+                <li class="mb-2">
+                    <span class="font-bold">"Jeudi 26 à samedi 28 Décembre :"</span>
+                    " OUVERT aux horaires habituels."
+                </li>
                 <li>"Fermeture du 29 Décembre au 6 Janvier pour vacances d'hiver."</li>
             </ul>
         }
@@ -38,35 +70,19 @@ pub fn App() -> impl IntoView {
     view! {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/gopal.css"/>
+        <Stylesheet id="leptos" href="/pkg/gopal.css" />
 
         // sets the document title
-        <Title text="Le Gopal Tours"/>
+        <Title text="Le Gopal Tours" />
 
-        <Meta name="description" content="Le Gopal Tours - Restaurant Végétarien & Vegan."/>
-        <Meta name="keywords" content="végétarien, vegan, restaurant, gopal, krishna"/>
+        <Meta name="description" content="Le Gopal Tours - Restaurant Végétarien & Vegan." />
+        <Meta name="keywords" content="végétarien, vegan, restaurant, gopal, krishna" />
         <Link rel="apple-touch-icon" href="/logo192.png" />
         <Link rel="manifest" href="/manifest.json" />
 
         // content for this welcome page
-        <Router fallback=|| {
-            let mut outside_errors = Errors::default();
-            outside_errors.insert_with_default_key(AppError::NotFound);
-
-           // Get the current location
-           #[cfg(feature = "ssr")]
-           let location = use_location();
-
-           // Log the 404 error with the requested path
-           #[cfg(feature = "ssr")]
-           log!("404 Error: Not Found - Requested Path: {}", location.pathname.get());
-
-            view! {
-                <ErrorTemplate outside_errors/>
-            }
-            .into_view()
-        }>
-            <Header/>
+        <Router>
+            <Header />
             <Show when=move || { if_show_modal() }>
                 <Modal
                     set_if_show_modal
@@ -74,16 +90,29 @@ pub fn App() -> impl IntoView {
                     content
                 />
             </Show>
-            <Routes>
-                <Route path="" view=Home/>
-                <Route path="menu" view=Menu/>
-                <Route path="reservation" view=Reservation/>
-                <Route path="contact" view=Contact/>
-                <Route path="policy" view=Policy/>
-                <Route path="about" view=About/>
-                <Route path="gallery" view=Gallery/>
+            <Routes fallback=|| {
+                let mut outside_errors = Errors::default();
+                outside_errors.insert_with_default_key(AppError::NotFound);
+                #[cfg(feature = "ssr")]
+                let location = use_location();
+                #[cfg(feature = "ssr")]
+                log!("404 Error: Not Found - Requested Path: {}", location.pathname.get());
+
+                // Get the current location
+
+                // Log the 404 error with the requested path
+
+                view! { <ErrorTemplate outside_errors /> }
+            }>
+                <Route path=path!("/") view=Home />
+                <Route path=path!("/menu") view=Menu />
+                <Route path=path!("/reservation") view=Reservation />
+                <Route path=path!("/contact") view=Contact />
+                <Route path=path!("/policy") view=Policy />
+                <Route path=path!("/about") view=About />
+                <Route path=path!("/gallery") view=Gallery />
             </Routes>
-            <Footer/>
+            <Footer />
         </Router>
     }
 }

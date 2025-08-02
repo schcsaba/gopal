@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn Home() -> impl IntoView {
     view! {
             <main class="container mx-auto">
-                <Html lang="fr" />
                 <section class="py-10">
                     <div class="flex flex-wrap md:flex-nowrap p-5">
                         <div class="flex items-center justify-center p-5 mx-auto w-full lg:w-1/2">

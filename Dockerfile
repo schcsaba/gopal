@@ -1,8 +1,8 @@
-# Get started with a build env with Rust nightly
-FROM rustlang/rust:nightly-bullseye AS builder
+# Get started with a build env with Rust nightly compatible with Leptos 0.8.5
+FROM rustlang/rust:nightly-bookworm AS builder
 
 # If you’re using stable, use this instead
-# FROM rust:1.74-bullseye as builder
+# FROM rust:1.88-bookworm as builder  # Leptos 0.8.5 requires Rust 1.88+
 
 RUN apt-get update -y && \
     apt-get install -y curl
@@ -17,7 +17,7 @@ RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/c
 RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
 RUN cp cargo-binstall /usr/local/cargo/bin
 
-# Install cargo-leptos
+# Install cargo-leptos (will get latest version compatible with Leptos 0.8.5)
 RUN cargo binstall cargo-leptos -y
 
 # Add the WASM target
@@ -26,7 +26,16 @@ RUN rustup target add wasm32-unknown-unknown
 # Make an /app dir, which everything will eventually live in
 RUN mkdir -p /app
 WORKDIR /app
-COPY . .
+
+# Copy essential config files first for better layer caching and linker fix
+COPY rust-toolchain.toml ./
+COPY .cargo/ ./.cargo/
+COPY Cargo.toml Cargo.lock ./
+
+# Copy source code and assets
+COPY src/ ./src/
+COPY style/ ./style/
+COPY public/ ./public/
 
 ENV LEPTOS_TAILWIND_VERSION=v4.0.0
 RUN npm install tailwindcss

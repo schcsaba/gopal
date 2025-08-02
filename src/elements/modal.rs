@@ -1,5 +1,5 @@
 use leptos::ev::{MouseEvent, TouchEvent};
-use leptos::*;
+use leptos::prelude::*;
 
 #[component]
 pub fn Modal<F, IV>(

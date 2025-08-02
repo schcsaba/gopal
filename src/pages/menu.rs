@@ -1,11 +1,9 @@
-use leptos::*;
-use leptos_meta::Html;
+use leptos::prelude::*;
 
 #[component]
 pub fn Menu() -> impl IntoView {
     view! {
         <main class="container mx-auto">
-            <Html lang="fr" />
             <section class="mt-20 text-center">
                 <h2 class="text-4xl tracking-widest uppercase pb-5">Notre carte</h2>
                 <div class="flex justify-center items-center">

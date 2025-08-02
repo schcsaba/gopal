@@ -1,9 +1,9 @@
-use leptos::*;
-use leptos_router::*;
+use leptos::prelude::*;
+use leptos_router::hooks::use_location;
 
 #[component]
 pub fn Nav() -> impl IntoView {
-    let (is_open, set_is_open) = create_signal(false);
+    let (is_open, set_is_open) = signal(false);
     let location = use_location();
     let is_home = move || location.pathname.get() == "/";
     let is_menu = move || location.pathname.get() == "/menu";
@@ -26,12 +26,11 @@ pub fn Nav() -> impl IntoView {
             <div class="flex justify-between items-center">
                 <div>
                     {
-                        move || if is_home() {
-                            view! {
+                        move || match is_home() {
+                            true => view! {
                                 <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-white.svg" />
-                            }.into_any()
-                        } else {
-                            view! {
+                            }.into_any(),
+                            false => view! {
                                 <a href="/">
                                     <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-black.svg" />
                                 </a>
@@ -75,8 +74,8 @@ pub fn Nav() -> impl IntoView {
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
                             >
-                            {move || if is_open() {
-                                view! {
+                            {move || match is_open() {
+                                true => view! {
                                     <path
                                         clip-rule="evenodd"
                                         d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
@@ -87,9 +86,8 @@ pub fn Nav() -> impl IntoView {
                                             "black"
                                         }
                                     />
-                                }
-                            } else {
-                                view! {
+                                }.into_any(),
+                                false => view! {
                                     <path
                                         d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                                         fill-rule="evenodd"
@@ -99,7 +97,7 @@ pub fn Nav() -> impl IntoView {
                                             "black"
                                         }
                                     />
-                                }
+                                }.into_any()
                             }}
                             </svg>
                         </button>
