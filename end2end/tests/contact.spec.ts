@@ -8,8 +8,8 @@ test.describe("Contact Page", () => {
   test("displays contact information", async ({ page }) => {
     // Check opening hours section
     await expect(page.locator("text=Heures d'ouverture")).toBeVisible();
-    await expect(page.locator("text=Mardi : 12h à 14h")).toBeVisible();
-    await expect(page.locator("text=Vendredi : 12h à 14h et 19h à 21h30")).toBeVisible();
+    await expect(page.locator("text=Mardi : 12h00 à 14h00")).toBeVisible();
+    await expect(page.locator("text=Vendredi : 12h00 à 14h00 et 19h00 à 21h30")).toBeVisible();
     
     // Check contact details
     await expect(page.locator("text=Coordonnées")).toBeVisible();

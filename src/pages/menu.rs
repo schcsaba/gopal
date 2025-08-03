@@ -1,7 +1,12 @@
 use leptos::prelude::*;
+use crate::data::menu::{get_formules, get_desserts, get_boissons, MenuItem};
 
 #[component]
 pub fn Menu() -> impl IntoView {
+    let formules = get_formules();
+    let desserts = get_desserts();
+    let boissons = get_boissons();
+
     view! {
         <main class="container mx-auto">
             <section class="mt-20 text-center">
@@ -11,44 +16,81 @@ pub fn Menu() -> impl IntoView {
                 </div>
 
                 <ul>
+                    // Formules section
                     <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Formules</li>
                     <li class="pb-20 text-2xl">
                         <ul>
-                            <li class="py-4 font-sans font-extrabold">"Assiette Gourmande 9,00 €"</li>
-                            <li class="mb-8">samosa aux légumes + salade composée</li>
-                            <li class="py-4 font-sans font-extrabold">"Plat du jour 13,00 €"</li>
-                            <li class="mb-8">riz parfumé + curry <span class="font-extrabold">ou</span> boulettes de légumes <span class="font-extrabold">ou</span> soupe (au choix) + galette papadam</li>
-                            <li class="py-4 font-sans font-extrabold">"Menu « Gopal » 16,00 €"</li>
-                            <li class="mb-8">salade composée + riz parfumé + curry + boulettes de légumes + soupe + galette papadam</li>
-                            <li class="py-4 font-sans font-extrabold">"Spéciale du chef 14,00 €"</li>
-                            <li>lasagne royale, calzoni, fougasse, etc... + salade composée</li>
+                            <For
+                                each=move || formules.clone()
+                                key=|item| item.name.clone()
+                                children=move |item: MenuItem| {
+                                    let formatted_name_price = format!("{} {}", item.name, item.format_price());
+                                    let is_last = item.name == "Spéciale du chef";
+                                    
+                                    view! {
+                                        <li class="py-4 font-sans font-extrabold">
+                                            {formatted_name_price}
+                                        </li>
+                                        <li class={if is_last { "" } else { "mb-8" }}>
+                                            {if item.name == "Plat du jour" {
+                                                view! {
+                                                    "riz parfumé + curry " <span class="font-extrabold">"ou"</span> " boulettes de légumes " <span class="font-extrabold">"ou"</span> " soupe (au choix) + galette papadam"
+                                                }.into_any()
+                                            } else {
+                                                view! { {item.description} }.into_any()
+                                            }}
+                                        </li>
+                                    }
+                                }
+                            />
                         </ul>
                     </li>
+                    
+                    // Desserts section
                     <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Desserts</li>
                     <li class="pb-20 text-2xl">
                         <ul>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Cheesecake (caramel/chocolat, mangue ou fruits rouges...) 6,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Cupcake (ex : chocolat, crème de marron, framboise...) 5,80 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Crumble (pomme cannelle) 6,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Mousse choco vegan 5,80 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Pannacotta vegan 5,80 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Gâteau du chef vegan (la part) 6,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Halava (gâteau semoule) 5,80 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Tarte au citron vegan (la part) 6,50 €"</li>
+                            <For
+                                each=move || desserts.clone()
+                                key=|item| item.name.clone()
+                                children=move |item: MenuItem| {
+                                    let formatted_text = if item.description.is_empty() {
+                                        format!("{} {}", item.name, item.format_price())
+                                    } else {
+                                        format!("{} ({}) {}", item.name, item.description, item.format_price())
+                                    };
+                                    
+                                    view! {
+                                        <li class="py-4 mb-4 font-sans font-extrabold">
+                                            {formatted_text}
+                                        </li>
+                                    }
+                                }
+                            />
                         </ul>
                     </li>
+                    
+                    // Boissons section
                     <li class="pt-10 pb-6 text-5xl tracking-widest uppercase">Nos Boissons</li>
                     <li class="pb-20 text-2xl">
                         <ul>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Lassi (au yaourt vegan, parfum mangue ou rose) 25 cl 4,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Limonade maison (menthe fraîche, citron vert, gingembre) 25 cl 3,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"San Pellegrino aromatisée 33 cl 2,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Bière sans alcool 25 cl 3,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Tisane 20 cl 2,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Eau pétillante 33 cl 2,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Eau plate 50 cl 2,00 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Café expresso 2,50 €"</li>
-                            <li class="py-4 mb-4 font-sans font-extrabold">"Double expresso 3,00 €"</li>
+                            <For
+                                each=move || boissons.clone()
+                                key=|item| item.name.clone()
+                                children=move |item: MenuItem| {
+                                    let formatted_text = if item.description.is_empty() {
+                                        format!("{} {}", item.name, item.format_price())
+                                    } else {
+                                        format!("{} ({}) {}", item.name, item.description, item.format_price())
+                                    };
+                                    
+                                    view! {
+                                        <li class="py-4 mb-4 font-sans font-extrabold">
+                                            {formatted_text}
+                                        </li>
+                                    }
+                                }
+                            />
                         </ul>
                     </li>
                 </ul>

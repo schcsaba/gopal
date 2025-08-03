@@ -674,6 +674,7 @@ dependencies = [
  "leptos_axum",
  "leptos_meta",
  "leptos_router",
+ "regex",
  "serde",
  "tempfile",
  "thiserror 1.0.69",
