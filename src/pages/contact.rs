@@ -7,11 +7,10 @@ pub fn Contact() -> impl IntoView {
             <section class="pt-20">
                 <div class="flex flex-wrap md:flex-nowrap w-full p-2">
                     <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">
-                        <div class="aspect-w-3 aspect-h-4">
+                        <div class="w-full h-64 md:h-72 lg:h-full">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.13273053803!2d0.6773934768938756!3d47.4093521711725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5dbe973d05f%3A0x4623a58782228f72!2sGopal!5e0!3m2!1sen!2sfr!4v1723976237764!5m2!1sen!2sfr"
-                                width="600"
-                                height="450"
+                                class="w-full h-full rounded-lg"
                                 style="border:0;"
                                 allowfullscreen=""
                                 loading="lazy"

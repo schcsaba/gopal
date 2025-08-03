@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
 
 @font-face {
     font-family: "Daikon";
@@ -8,4 +7,11 @@
         url("../assets/fonts/Pepper-Type-Daikon-ExtraLight.woff2")
             format("woff2");
     font-display: swap;
+}
+
+:root {
+  --font-sans: "Daikon", "Helvetica", "Arial", sans-serif;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.30em;
 }

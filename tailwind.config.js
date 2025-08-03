@@ -1,20 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["*.html", "./src/**/*.rs"],
-  theme: {
-    fontFamily: {
-      sans: ["Daikon", "Helvetica", "Arial", "sans-serif"],
-    },
-    letterSpacing: {
-      tightest: "-.075em",
-      tighter: "-.05em",
-      tight: "-.025em",
-      normal: "0",
-      wide: ".025em",
-      wider: ".05em",
-      widest: ".30em",
-    },
-    extend: {},
-  },
-  plugins: [require("@tailwindcss/aspect-ratio")],
 };

@@ -12,7 +12,7 @@ use crate::pages::reservation::Reservation;
 #[cfg(feature = "ssr")]
 use leptos::logging::log;
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, Link, Meta, MetaTags, Stylesheet, Title};
+use leptos_meta::{provide_meta_context, Link, Meta, MetaTags, Title};
 use leptos_router::components::{Route, Router, Routes};
 #[cfg(feature = "ssr")]
 use leptos_router::hooks::use_location;
@@ -28,6 +28,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                 <AutoReload options=options.clone() />
                 <HydrationScripts options />
                 <MetaTags />
+                <link id="leptos" rel="stylesheet" href="/pkg/gopal.css" />
             </head>
             <body>
                 <App />
@@ -68,10 +69,6 @@ pub fn App() -> impl IntoView {
     };
 
     view! {
-        // injects a stylesheet into the document <head>
-        // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/gopal.css" />
-
         // sets the document title
         <Title text="Le Gopal Tours" />
 

@@ -32,13 +32,16 @@ COPY rust-toolchain.toml ./
 COPY .cargo/ ./.cargo/
 COPY Cargo.toml Cargo.lock ./
 
+# Copy package files first for proper dependency management  
+COPY package.json package-lock.json ./
+
+# Install Node.js dependencies using exact versions from package.json
+RUN npm ci
+
 # Copy source code and assets
 COPY src/ ./src/
 COPY style/ ./style/
 COPY public/ ./public/
-
-ENV LEPTOS_TAILWIND_VERSION=v4.0.0
-RUN npm install tailwindcss
 
 # Build the app
 RUN cargo leptos build --release -vv
