@@ -1,7 +1,15 @@
 use leptos::prelude::*;
+use crate::data::contact::get_contact_info;
 
 #[component]
 pub fn Footer() -> impl IntoView {
+    let contact = get_contact_info();
+    let address_formatted = contact.address.replace(", ", "<br />");
+    let phone_formatted = contact.format_phone_for_display();
+    let phone_href = format!("tel:{}", contact.phone);
+    let email_href = format!("mailto:{}", contact.email);
+    let email = contact.email.clone();
+    
     view! {
         <footer class="container mx-auto">
             <div class="flex flex-wrap-reverse lg:flex-nowrap items-center justify-center lg:justify-between">
@@ -24,10 +32,10 @@ pub fn Footer() -> impl IntoView {
                     <ul>
                         <li class="font-sans text-2xl font-bold tracking-wide pb-4 uppercase">Trouvez-nous</li>
                         <li class="font-sans  font-bold text-lg py-2">Adresse :</li>
-                        <li>8 Avenue du Mans<br />37100 Tours, France</li>
+                        <li inner_html={address_formatted}></li>
                         <li class="font-sans  font-bold text-lg py-2">Téléphone / Email :</li>
-                        <li><a href="tel:+33783654565">07 83 65 45 65</a></li>
-                        <li><a href="mailto:contact@legopal.fr">contact@legopal.fr</a></li>
+                        <li><a href={phone_href}>{phone_formatted}</a></li>
+                        <li><a href={email_href}>{email}</a></li>
                     </ul>
                 </div>
                 <div class="flex justify-center h-64 w-full ml-10 lg:-ml-0 lg:w-1/4">

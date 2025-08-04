@@ -1,7 +1,9 @@
 use leptos::prelude::*;
+use crate::data::contact::get_contact_info;
 
 #[component]
 pub fn Policy() -> impl IntoView {
+    let contact = get_contact_info();
     view! {
             <main class="container mx-auto">
                 <section class="py-20">
@@ -13,8 +15,8 @@ pub fn Policy() -> impl IntoView {
                         </p>
                         <h3  class="text-3xl tracking-widest uppercase pb-5">Edition du site</h3>
                         <p class="text-2xl mb-12">
-                            "Le site legopal.fr est édité par l'association Gopal (Adresse : 8 Avenue du Mans 37100 Tours,
-                            SIRET/APE: 85165504300012/9499Z)."
+                            {format!("Le site legopal.fr est édité par l'association Gopal (Adresse : {},
+                            SIRET/APE: 85165504300012/9499Z).", contact.address)}
                         </p>
                         <h3  class="text-3xl tracking-widest uppercase pb-5">Propriété intellectuelle</h3>
                         <p class="text-2xl mb-12">

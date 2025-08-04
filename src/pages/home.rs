@@ -1,7 +1,12 @@
 use leptos::prelude::*;
+use crate::data::contact::get_contact_info;
 
 #[component]
 pub fn Home() -> impl IntoView {
+    let contact = get_contact_info();
+    let address_formatted = contact.address.replace(", ", "<br />");
+    let phone_formatted = contact.format_phone_for_display();
+    let phone_href = format!("tel:{}", contact.phone);
     view! {
             <main class="container mx-auto">
                 <section class="py-10">
@@ -107,10 +112,10 @@ pub fn Home() -> impl IntoView {
                                     <div class="my-auto">
                                         <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Rendez-nous visite :</h2>
                                         <p class="mt-2 leading-loose font-sans uppercase tracking-wide font-bold text-white">Le Gopal</p>
-                                        <p class="mt-2 mb-6 leading-loose text-white">8 Avenue du Mans<br />37100 Tours, France</p>
+                                        <p class="mt-2 mb-6 leading-loose text-white" inner_html={address_formatted}></p>
                                         <h2 class="text-3xl lg:text-4xl font-semibold text-white uppercase">Appelez-nous :</h2>
                                         <p class="mt-2 mb-6 leading-loose text-white">
-                                            <a href="tel:+33783654565">07 83 65 45 65</a>
+                                            <a href={phone_href}>{phone_formatted}</a>
                                         </p>
                                         <a
                                             class="inline-block py-4 px-8 text-xs border bg-black text-white uppercase tracking-widest font-semibold leading-none hover:bg-white hover:border-white hover:text-black rounded-none transition duration-300"

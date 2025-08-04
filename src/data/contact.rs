@@ -112,13 +112,15 @@ pub fn get_contact_info() -> ContactInfo {
                     },
                 ],
             },
-                    OpeningHours {
-            day: Day::Saturday,
-            slots: vec![TimeSlot {
-                start: "12:00".to_string(),
-                end: "14:00".to_string(),
-            }],
-        },
+            OpeningHours {
+                day: Day::Saturday,
+                slots: vec![
+                    TimeSlot {
+                        start: "12:00".to_string(),
+                        end: "14:00".to_string(),
+                    },
+                ],
+            },
         ],
     }
 }
@@ -133,4 +135,21 @@ pub fn format_opening_hours_text(hours: &OpeningHours) -> String {
         ),
         _ => format!("{} : Fermé", hours.day.to_french()),
     }
+}
+
+pub fn format_all_opening_hours_html(hours_list: &[OpeningHours]) -> String {
+    hours_list
+        .iter()
+        .map(|hours| {
+            format!("<div class=\"mb-4\"><span class=\"font-bold\">{}</span><br/>{}</div>", 
+                hours.day.to_french(), 
+                match hours.slots.len() {
+                    1 => hours.slots[0].format(),
+                    2 => format!("{} et {}", hours.slots[0].format(), hours.slots[1].format()),
+                    _ => "Fermé".to_string(),
+                }
+            )
+        })
+        .collect::<Vec<String>>()
+        .join("")
 }

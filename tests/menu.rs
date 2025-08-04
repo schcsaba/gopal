@@ -1,4 +1,3 @@
-// Tests for the actual menu data module from src/data/menu.rs
 use gopal::data::menu::{get_menu_items, filter_by_category, calculate_total_price, get_formules, get_desserts, get_boissons, MenuItem, MenuCategory};
 
 #[cfg(test)]
