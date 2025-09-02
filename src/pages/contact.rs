@@ -29,9 +29,9 @@ pub fn Contact() -> impl IntoView {
                     </div>
                     <div class="flex flex-col p-2 w-full lg:w-1/2">
                         <h2 class="font-sans font-bold text-2xl pb-4 uppercase tracking-wide">"Heures d'ouverture :"</h2>
-                        <p class="text-red-500 font-bold">"Le Gopal est en congé du 1er Août au 1er Septembre."</p>
-                        <p class="text-red-500 font-bold">Nous rouvrirons le 2 Septembre.</p>
-                        <p class="text-red-500 font-bold">Merci pour votre compréhension !</p>
+                        <p class="text-red-500 font-bold">"Chers amis,"</p>
+                        <p class="text-red-500 font-bold">"Le Gopal est fermé temporairement."</p>
+                        <p class="text-red-500 font-bold">"Nous avons hâte de vous retrouver bientôt et vous remercions de votre fidélité et de votre patience."</p>
                         <For
                             each=move || hours.clone()
                             key=|hours| format!("{:?}", hours.day)
