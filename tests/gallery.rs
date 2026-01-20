@@ -49,7 +49,9 @@ async fn test_get_images() {
     fs::write(temp_dir.path().join("not_an_image.txt"), "dummy content").unwrap();
 
     // Set the environment variable
-    std::env::set_var("GALLERY_PATH", &gallery_path);
+    unsafe {
+        std::env::set_var("GALLERY_PATH", &gallery_path);
+    }
 
     // Call the function
     let mut result = get_images().await.unwrap();
@@ -73,7 +75,9 @@ async fn test_get_images_empty_directory() {
     let gallery_path = temp_dir.path().to_str().unwrap().to_string();
 
     // Set the environment variable
-    std::env::set_var("GALLERY_PATH", &gallery_path);
+    unsafe {
+        std::env::set_var("GALLERY_PATH", &gallery_path);
+    }
 
     // Call the function
     let result = get_images().await.unwrap();
@@ -85,7 +89,9 @@ async fn test_get_images_empty_directory() {
 #[tokio::test]
 async fn test_get_images_nonexistent_directory() {
     // Set a non-existent directory path
-    std::env::set_var("GALLERY_PATH", "/path/that/does/not/exist");
+    unsafe {
+        std::env::set_var("GALLERY_PATH", "/path/that/does/not/exist");
+    }
 
     // Call the function
     let result = get_images().await.unwrap();
