@@ -13,8 +13,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && \
 
 # Install cargo-binstall, which makes it easier to install other
 # cargo extensions like cargo-leptos
-RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz
-RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
+# (pick the binary matching the build host, so this also builds natively on arm64)
+RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-$(uname -m)-unknown-linux-musl.tgz
+RUN tar -xvf cargo-binstall-$(uname -m)-unknown-linux-musl.tgz
 RUN cp cargo-binstall /usr/local/cargo/bin
 
 # Install cargo-leptos (will get latest version compatible with Leptos 0.8.5)
