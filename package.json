@@ -1,4 +1,10 @@
 {
+  "private": true,
+  "scripts": {
+    "build": "cargo run --release && tailwindcss -i style/tailwind.css -o dist/pkg/gopal.css --minify",
+    "serve": "cargo run --release -- serve",
+    "dev": "npm run build && npm run serve"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.0",
     "tailwindcss": "4.0.12"

@@ -9,26 +9,23 @@ use crate::pages::home::Home;
 use crate::pages::menu::Menu;
 use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
-#[cfg(feature = "ssr")]
-use leptos::logging::log;
+use crate::elements::nav::announcement_enabled;
 use leptos::prelude::*;
 use leptos_meta::{provide_meta_context, Link, Meta, MetaTags, Title};
 use leptos_router::components::{Route, Router, Routes};
-#[cfg(feature = "ssr")]
-use leptos_router::hooks::use_location;
-use leptos_router::path;
+use leptos_router::static_routes::StaticRoute;
+use leptos_router::{path, SsrMode};
 
-pub fn shell(options: LeptosOptions) -> impl IntoView {
+pub fn shell() -> impl IntoView {
     view! {
         <!DOCTYPE html>
         <html lang="fr">
             <head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <AutoReload options=options.clone() />
-                <HydrationScripts options />
                 <MetaTags />
                 <link id="leptos" rel="stylesheet" href="/pkg/gopal.css" />
+                <script src="/site.js" defer></script>
             </head>
             <body>
                 <App />
@@ -41,10 +38,6 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
-
-    let (if_show_modal, set_if_show_modal) = signal(false);
-
-    provide_context(set_if_show_modal);
 
     let content = || {
         view! {
@@ -80,36 +73,32 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <Header />
-            <Show when=move || { if_show_modal() }>
+            {announcement_enabled().then(|| view! {
                 <Modal
-                    set_if_show_modal
                     title="Dates d'ouverture du Gopal pour les fêtes".to_string()
                     content
                 />
-            </Show>
-            <Routes fallback=|| {
-                let mut outside_errors = Errors::default();
-                outside_errors.insert_with_default_key(AppError::NotFound);
-                #[cfg(feature = "ssr")]
-                let location = use_location();
-                #[cfg(feature = "ssr")]
-                log!("404 Error: Not Found - Requested Path: {}", location.pathname.get());
-
-                // Get the current location
-
-                // Log the 404 error with the requested path
-
-                view! { <ErrorTemplate outside_errors /> }
-            }>
-                <Route path=path!("/") view=Home />
-                <Route path=path!("/menu") view=Menu />
-                <Route path=path!("/reservation") view=Reservation />
-                <Route path=path!("/contact") view=Contact />
-                <Route path=path!("/policy") view=Policy />
-                <Route path=path!("/about") view=About />
-                <Route path=path!("/gallery") view=Gallery />
+            })}
+            // Every route is prerendered to `<path>.html` at build time.
+            <Routes fallback=NotFound>
+                <Route path=path!("/") view=Home ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/menu") view=Menu ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/reservation") view=Reservation ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/contact") view=Contact ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/policy") view=Policy ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/about") view=About ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/gallery") view=Gallery ssr=SsrMode::Static(StaticRoute::new()) />
+                // GitHub Pages serves `404.html` for unknown paths.
+                <Route path=path!("/404") view=NotFound ssr=SsrMode::Static(StaticRoute::new()) />
             </Routes>
             <Footer />
         </Router>
     }
+}
+
+#[component]
+fn NotFound() -> impl IntoView {
+    let mut outside_errors = Errors::default();
+    outside_errors.insert_with_default_key(AppError::NotFound);
+    view! { <ErrorTemplate outside_errors /> }
 }

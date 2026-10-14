@@ -1,21 +1,22 @@
 use leptos::prelude::*;
 use leptos_router::hooks::use_location;
 
+/// Whether to show the "Annonce" button and modal, decided at build time.
+pub fn announcement_enabled() -> bool {
+    std::env::var("IF_SHOW_ANNOUNCEMENT_BUTTON")
+        .map(|v| v.parse::<bool>().unwrap_or(false))
+        .unwrap_or(false)
+}
+
+// The mobile menu toggle is wired up by `public/site.js` through the
+// `data-menu-*` attributes.
 #[component]
 pub fn Nav() -> impl IntoView {
-    let (is_open, set_is_open) = signal(false);
     let location = use_location();
     let is_home = move || location.pathname.get() == "/";
     let is_menu = move || location.pathname.get() == "/menu";
     let is_reservation = move || location.pathname.get() == "/reservation";
     let is_contact = move || location.pathname.get() == "/contact";
-
-    let set_if_show_modal =
-        use_context::<WriteSignal<bool>>().expect("to have found the setter provided");
-
-    let if_show_announcement_button = std::env::var("IF_SHOW_ANNOUNCEMENT_BUTTON")
-        .map(|v| v.parse::<bool>().unwrap_or(false))
-        .unwrap_or(false);
 
     view! {
         <nav
@@ -39,8 +40,8 @@ pub fn Nav() -> impl IntoView {
                     }
                 </div>
                 <div class="flex">
-                    <Show when=move || { if_show_announcement_button }>
-                        <button on:click=move |_| set_if_show_modal(true) class="animate-bounce text-violet-700 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">
+                    <Show when=announcement_enabled>
+                        <button data-modal-open type="button" class="animate-bounce text-violet-700 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">
                             "Annonce"
                         </button>
                     </Show>
@@ -59,11 +60,9 @@ pub fn Nav() -> impl IntoView {
                     </div>
                     <div class="block lg:hidden">
                         <button
-                            on:click=move |_| {
-                                set_is_open.update(|o| *o = !*o);
-                            }
-                            class:transition=move || is_open()
-                            class=("transform-180", move || is_open())
+                            data-menu-toggle
+                            aria-expanded="false"
+                            aria-controls="mobile-menu"
                             class="block lg:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
                             type="button"
                             id="mobile-menu-button"
@@ -74,40 +73,29 @@ pub fn Nav() -> impl IntoView {
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
                             >
-                            {move || match is_open() {
-                                true => view! {
-                                    <path
-                                        clip-rule="evenodd"
-                                        d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                                        fill-rule="evenodd"
-                                        fill=move || if is_home() {
-                                            "white"
-                                        } else {
-                                            "black"
-                                        }
-                                    />
-                                }.into_any(),
-                                false => view! {
-                                    <path
-                                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                                        fill-rule="evenodd"
-                                        fill=move || if is_home() {
-                                            "white"
-                                        } else {
-                                            "black"
-                                        }
-                                    />
-                                }.into_any()
-                            }}
+                                <path
+                                    data-menu-icon="close"
+                                    class="hidden"
+                                    clip-rule="evenodd"
+                                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                                    fill-rule="evenodd"
+                                    fill=move || if is_home() { "white" } else { "black" }
+                                />
+                                <path
+                                    data-menu-icon="open"
+                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                                    fill-rule="evenodd"
+                                    fill=move || if is_home() { "white" } else { "black" }
+                                />
                             </svg>
                         </button>
                     </div>
                 </div>
             </div>
             <div
-                class=("max-h-0", move || !is_open())
-                class=("max-h-screen", move || is_open())
-                class="w-full z-50 lg:hidden flex justify-end w-auto overflow-hidden transition-all duration-400 ease-in-out"
+                id="mobile-menu"
+                data-menu
+                class="max-h-0 w-full z-50 lg:hidden flex justify-end w-auto overflow-hidden transition-all duration-400 ease-in-out"
             >
                 <ul
                     class=("bg-lime-200/65", move || is_home())
@@ -116,9 +104,6 @@ pub fn Nav() -> impl IntoView {
                 >
                     <li class="mr-3">
                         <a
-                            on:click=move |_| {
-                                set_is_open.update(|o| *o = !*o);
-                            }
                             class=("text-white", move || is_home())
                             class=("hover:text-gray-200", move || !is_home())
                             class="inline-block py-2 px-4 no-underline uppercase"
@@ -129,9 +114,6 @@ pub fn Nav() -> impl IntoView {
                     </li>
                     <li class="mr-3">
                         <a
-                            on:click=move |_| {
-                                set_is_open.update(|o| *o = !*o);
-                            }
                             class=("text-gray-200", move || is_menu())
                             class=("text-gray-600", move || !is_menu())
                             class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
@@ -142,9 +124,6 @@ pub fn Nav() -> impl IntoView {
                     </li>
                     <li class="mr-3">
                         <a
-                            on:click=move |_| {
-                                set_is_open.update(|o| *o = !*o);
-                            }
                             class=("text-gray-200", move || is_reservation())
                             class=("text-gray-600", move || !is_reservation())
                             class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
@@ -155,9 +134,6 @@ pub fn Nav() -> impl IntoView {
                     </li>
                         <li class="mr-3">
                         <a
-                            on:click=move |_| {
-                                set_is_open.update(|o| *o = !*o);
-                            }
                             class=("text-gray-200", move || is_contact())
                             class=("text-gray-600", move || !is_contact())
                             class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"

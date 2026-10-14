@@ -1,9 +1,8 @@
-use leptos::html;
 use leptos::prelude::*;
 use serde::{Deserialize, Serialize};
-use wasm_bindgen::closure::Closure;
-use wasm_bindgen::JsCast;
 
+/// Images above this index are lazy-loaded by the browser.
+const EAGER_IMAGES: usize = 8;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Image {
@@ -20,161 +19,58 @@ impl PartialEq for Image {
     }
 }
 
-#[server(GetImages)]
-pub async fn get_images() -> Result<Vec<Image>, ServerFnError> {
+/// Lists the `.webp` files in the gallery folder, sorted by filename.
+/// Read once at build time.
+pub fn get_images() -> Vec<Image> {
     use std::fs;
 
-    let mut images = Vec::new();
     let gallery_path =
         std::env::var("GALLERY_PATH").unwrap_or_else(|_| "public/assets/img/gallery".to_string());
 
-    if let Ok(entries) = fs::read_dir(gallery_path) {
-        for (id, entry) in entries.enumerate() {
-            if let Ok(entry) = entry {
-                if let Some(filename) = entry.file_name().to_str() {
-                    if filename.ends_with(".webp") {
-                        let aspect_ratio = 1.5;
+    let mut filenames: Vec<String> = fs::read_dir(gallery_path)
+        .into_iter()
+        .flatten()
+        .flatten()
+        .filter_map(|entry| entry.file_name().to_str().map(str::to_string))
+        .filter(|filename| filename.ends_with(".webp"))
+        .collect();
+    filenames.sort();
 
-                        images.push(Image {
-                            id,
-                            filename: filename.to_string(),
-                            aspect_ratio,
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    Ok(images)
+    filenames
+        .into_iter()
+        .enumerate()
+        .map(|(id, filename)| Image {
+            id,
+            filename,
+            aspect_ratio: 1.5,
+        })
+        .collect()
 }
 
+// Click-to-expand is wired up by `public/site.js` through `data-gallery-item`.
 #[component]
 pub fn Gallery() -> impl IntoView {
-    let images = Resource::new(|| (), |_| get_images());
-    let visible = signal(10);
-    let visible_count = visible.0;
-    
-    let set_visible_count = visible.1;
-    let image = signal(None::<usize>);
-    let expanded_image = image.0;
-    
-    #[cfg(target_arch = "wasm32")]
-    let set_expanded_image = image.1;
-
-    
-    // Set up scroll event listener for infinite scroll
-    Effect::new(move |_| {
-        let handle_scroll = move |_: web_sys::Event| {
-            let window = web_sys::window().unwrap();
-            let document = window.document().unwrap();
-
-            let scroll_top = window.scroll_y().unwrap_or(0.0);
-            let window_height = window
-                .inner_height()
-                .unwrap_or(0.into())
-                .as_f64()
-                .unwrap_or(0.0);
-            let document_height = document
-                .document_element()
-                .map(|el| el.scroll_height())
-                .unwrap_or(0);
-
-            if (document_height as f64) - (scroll_top + window_height) < 100.0 {
-                set_visible_count.update(|count| *count += 10);
-            }
-        };
-
-        let window = web_sys::window().unwrap();
-        let listener = Closure::wrap(Box::new(handle_scroll) as Box<dyn Fn(web_sys::Event)>);
-        window
-            .add_event_listener_with_callback("scroll", listener.as_ref().unchecked_ref())
-            .unwrap();
-        
-        // Return a cleanup function
-        move || {
-            window
-                .remove_event_listener_with_callback("scroll", listener.as_ref().unchecked_ref())
-                .unwrap();
-        }
-    });
-
-    
-    #[cfg(target_arch = "wasm32")]
-    let scroll_to_center = move |node_ref: NodeRef<html::Div>| {
-        if let Some(element) = node_ref.get_untracked() {
-            let window = web_sys::window().unwrap();
-            let window_height = window
-                .inner_height()
-                .unwrap_or(0.into())
-                .as_f64()
-                .unwrap_or(0.0);
-
-            let element: &web_sys::Element = element.as_ref();
-            let rect = element.get_bounding_client_rect();
-            let element_top = rect.top();
-            let element_height = rect.height();
-
-            let scroll_y = window.scroll_y().unwrap_or(0.0);
-            let scroll_target = scroll_y + element_top - (window_height - element_height) / 2.0;
-            window.scroll_with_x_and_y(0.0, scroll_target);
-        }
-    };
-
     view! {
         <main class="container mx-auto px-24 py-8">
-            <Suspense
-                fallback=move || view! {
-                    <div class="flex justify-center items-center my-8">
-                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
-                    </div>
-                }
-            >
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                    {move || images.get().map(|images_result| {
-                        match images_result {
-                            Ok(images) => images.into_iter().take(visible_count.get()).map(|image| {
-                                let id = image.id;
-                                let is_expanded = move || expanded_image.get() == Some(id);
-                                let div_element: NodeRef<html::Div> = NodeRef::new();
-                                
-                                #[cfg(target_arch = "wasm32")]
-                                let toggle_expand = move |_: leptos::ev::MouseEvent| {
-                                    if is_expanded() {
-                                        set_expanded_image.set(None);
-                                    } else {
-                                        set_expanded_image.set(Some(id));
-                                        request_animation_frame(move || {
-                                            scroll_to_center(div_element);
-                                        });
-                                    }
-                                };
-
-                                #[cfg(not(target_arch = "wasm32"))]
-                                let toggle_expand = move |_: leptos::ev::MouseEvent| {};
-
-                                view! {
-                                    <div
-                                        node_ref=div_element
-                                        class="relative overflow-hidden transition-all duration-700 ease-in-out cursor-pointer"
-                                        class=("col-span-full", move || is_expanded())
-                                        class=("hover:scale-105", move || !is_expanded())
-                                        on:click=toggle_expand
-                                    >
-                                        <img
-                                            src=format!("/assets/img/gallery/{}", image.filename)
-                                            alt=format!("Image {}", image.id)
-                                            class="w-full h-auto object-cover"
-                                            style=format!("aspect-ratio: {}", image.aspect_ratio)
-                                        />
-                                    </div>
-                                }
-                            }).collect_view().into_any(),
-                            Err(e) => view! { <div>"Error loading images: " {e.to_string()}</div> }.into_any(),
-                        }
-                    })}
-                </div>
-            </Suspense>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {get_images().into_iter().map(|image| {
+                    view! {
+                        <div
+                            data-gallery-item
+                            class="relative overflow-hidden transition-all duration-700 ease-in-out cursor-pointer hover:scale-105"
+                        >
+                            <img
+                                src=format!("/assets/img/gallery/{}", image.filename)
+                                alt=format!("Image {}", image.id)
+                                loading=if image.id < EAGER_IMAGES { "eager" } else { "lazy" }
+                                decoding="async"
+                                class="w-full h-auto object-cover"
+                                style=format!("aspect-ratio: {}", image.aspect_ratio)
+                            />
+                        </div>
+                    }
+                }).collect_view()}
+            </div>
         </main>
     }
 }
