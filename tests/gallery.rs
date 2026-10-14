@@ -1,7 +1,6 @@
 use gopal::pages::gallery::{get_images, Image};
 use std::fs;
 use tempfile::TempDir;
-use tokio;
 
 #[test]
 fn test_image_partial_eq() {
@@ -37,8 +36,8 @@ fn test_image_partial_eq() {
     assert_ne!(image1, image5);
 }
 
-#[tokio::test]
-async fn test_get_images() {
+#[test]
+fn test_get_images() {
     // Create a temporary directory
     let temp_dir = TempDir::new().unwrap();
     let gallery_path = temp_dir.path().to_str().unwrap().to_string();
@@ -54,7 +53,7 @@ async fn test_get_images() {
     }
 
     // Call the function
-    let mut result = get_images().await.unwrap();
+    let mut result = get_images();
 
     // Sort the results by filename to ensure consistent ordering
     result.sort_by(|a, b| a.filename.cmp(&b.filename));
@@ -68,8 +67,8 @@ async fn test_get_images() {
     assert_eq!(result[1].aspect_ratio, 1.5);
 }
 
-#[tokio::test]
-async fn test_get_images_empty_directory() {
+#[test]
+fn test_get_images_empty_directory() {
     // Create an empty temporary directory
     let temp_dir = TempDir::new().unwrap();
     let gallery_path = temp_dir.path().to_str().unwrap().to_string();
@@ -80,21 +79,21 @@ async fn test_get_images_empty_directory() {
     }
 
     // Call the function
-    let result = get_images().await.unwrap();
+    let result = get_images();
 
     // Assert the results
     assert_eq!(result.len(), 0);
 }
 
-#[tokio::test]
-async fn test_get_images_nonexistent_directory() {
+#[test]
+fn test_get_images_nonexistent_directory() {
     // Set a non-existent directory path
     unsafe {
         std::env::set_var("GALLERY_PATH", "/path/that/does/not/exist");
     }
 
     // Call the function
-    let result = get_images().await.unwrap();
+    let result = get_images();
 
     // Assert the results
     assert_eq!(result.len(), 0);

@@ -1,90 +1,47 @@
-<picture>
-    <source srcset="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_Solid_White.svg" media="(prefers-color-scheme: dark)">
-    <img src="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_RGB.svg" alt="Leptos Logo">
-</picture>
+# Le Gopal
 
-# Leptos Axum Starter Template
+Website of Le Gopal, a vegetarian restaurant in Tours — [legopal.fr](https://legopal.fr).
 
-This is a template for use with the [Leptos](https://github.com/leptos-rs/leptos) web framework and the [cargo-leptos](https://github.com/akesson/cargo-leptos) tool using [Axum](https://github.com/tokio-rs/axum).
+The pages are written as [Leptos](https://github.com/leptos-rs/leptos) components and
+prerendered to plain HTML at build time, so the site is fully static: no server and no
+WebAssembly bundle. The little interactivity it has (mobile menu, announcement modal,
+gallery zoom) lives in `public/site.js`.
 
-## Creating your template repo
+## Requirements
 
-If you don't have `cargo-leptos` installed you can install it with
+- Rust nightly (picked up automatically from `rust-toolchain.toml`)
+- Node.js 22, for the Tailwind CLI: `npm ci`
 
-```bash
-cargo install cargo-leptos --locked
-```
-
-Then run
-```bash
-cargo leptos new --git leptos-rs/start-axum
-```
-
-to generate a new project template.
+## Building and previewing
 
 ```bash
-cd gopal
+npm run dev
 ```
 
-to go to your newly created project.  
-Feel free to explore the project structure, but the best place to start with your application code is in `src/app.rs`.  
-Addtionally, Cargo.toml may need updating as new versions of the dependencies are released, especially if things are not working after a `cargo update`.
+This renders every route into `dist/` (`/menu` → `dist/menu.html`, plus `dist/404.html`),
+copies `public/` next to it, builds the stylesheet into `dist/pkg/gopal.css`, and serves
+the result on http://127.0.0.1:3000 the same way GitHub Pages does.
 
-## Running your project
+`npm run build` and `npm run serve` run the two halves separately.
+
+Set `IF_SHOW_ANNOUNCEMENT_BUTTON=true` when building to show the "Annonce" button and
+modal.
+
+## Deploying
+
+Every push to `main` builds the site and publishes it to GitHub Pages
+(`.github/workflows/pages.yml`). The announcement is controlled by the
+`IF_SHOW_ANNOUNCEMENT_BUTTON` repository variable.
+
+## Testing
 
 ```bash
-cargo leptos watch
+cargo test
 ```
 
-## Installing Additional Tools
-
-By default, `cargo-leptos` uses `nightly` Rust, `cargo-generate`, and `sass`. If you run into any trouble, you may need to install one or more of these tools.
-
-1. `rustup toolchain install nightly --allow-downgrade` - make sure you have Rust nightly
-2. `rustup target add wasm32-unknown-unknown` - add the ability to compile Rust to WebAssembly
-3. `cargo install cargo-generate` - install `cargo-generate` binary (should be installed automatically in future)
-4. `npm install -g sass` - install `dart-sass` (should be optional in future
-
-## Compiling for Release
-```bash
-cargo leptos build --release
-```
-
-Will generate your server binary in target/server/release and your site package in target/site
-
-## Testing Your Project
-```bash
-cargo leptos end-to-end
-```
+End-to-end tests live in `end2end/` and run with Playwright against
+http://localhost:3000 (start it with `npm run dev`):
 
 ```bash
-cargo leptos end-to-end --release
+cd end2end && npx playwright test
 ```
-
-Cargo-leptos uses Playwright as the end-to-end test tool.  
-Tests are located in end2end/tests directory.
-
-## Executing a Server on a Remote Machine Without the Toolchain
-After running a `cargo leptos build --release` the minimum files needed are:
-
-1. The server binary located in `target/server/release`
-2. The `site` directory and all files within located in `target/site`
-
-Copy these files to your remote server. The directory structure should be:
-```text
-gopal
-site/
-```
-Set the following environment variables (updating for your project as needed):
-```text
-LEPTOS_OUTPUT_NAME="gopal"
-LEPTOS_SITE_ROOT="site"
-LEPTOS_SITE_PKG_DIR="pkg"
-LEPTOS_SITE_ADDR="127.0.0.1:3000"
-LEPTOS_RELOAD_PORT="3001"
-```
-Finally, run the server binary.
-
-## Licensing
-
-This template itself is released under the Unlicense. You should replace the LICENSE for your own application with an appropriate license if you plan to release it publicly.

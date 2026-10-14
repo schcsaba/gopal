@@ -13,3 +13,6 @@ end2end/playwright-report/
 playwright/.cache/
 
 .DS_Store
+
+# static site output
+/dist/
