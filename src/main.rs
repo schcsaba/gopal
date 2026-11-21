@@ -48,8 +48,9 @@ async fn build() {
     }
     copy_dir(Path::new(ASSETS_DIR), Path::new(SITE_ROOT)).unwrap();
 
-    let (_routes, static_routes) = generate_route_list_with_ssg(shell);
+    let (routes, static_routes) = generate_route_list_with_ssg(shell);
     static_routes.generate(&options).await;
+    write_sitemap(routes.iter().map(|route| route.path())).unwrap();
 
     println!("site written to {SITE_ROOT}/");
 }
@@ -77,6 +78,23 @@ async fn serve() {
     println!("serving {SITE_ROOT}/ on http://{PREVIEW_ADDR}");
     let listener = tokio::net::TcpListener::bind(PREVIEW_ADDR).await.unwrap();
     axum::serve(listener, app).await.unwrap();
+}
+
+/// Lists every page except the 404 page in `dist/sitemap.xml`.
+fn write_sitemap<'a>(paths: impl Iterator<Item = &'a str>) -> std::io::Result<()> {
+    let mut paths: Vec<&str> = paths.filter(|path| *path != "/404").collect();
+    paths.sort();
+    let urls: String = paths
+        .iter()
+        .map(|path| format!("  <url><loc>{SITE_URL}{path}</loc></url>\n"))
+        .collect();
+    std::fs::write(
+        Path::new(SITE_ROOT).join("sitemap.xml"),
+        format!(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
+             <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{urls}</urlset>\n"
+        ),
+    )
 }
 
 fn copy_dir(from: &Path, to: &Path) -> std::io::Result<()> {

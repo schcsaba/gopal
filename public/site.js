@@ -47,3 +47,14 @@ for (const item of galleryItems) {
     }
   });
 }
+
+// 404 page: rescue links with stray characters stuck to a real page name,
+// like "legopal.fr/reservation🙏" shared on social media
+const notFound = document.querySelector("[data-not-found]");
+if (notFound) {
+  const path = location.pathname.toLowerCase();
+  const page = notFound.dataset.notFound
+    .split(" ")
+    .find((name) => new RegExp(`^/${name}(?![a-z0-9])`).test(path));
+  if (page) location.replace(`/${page}${location.search}${location.hash}`);
+}
