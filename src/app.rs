@@ -105,7 +105,14 @@ pub fn App() -> impl IntoView {
 fn NotFound() -> impl IntoView {
     let mut outside_errors = Errors::default();
     outside_errors.insert_with_default_key(AppError::NotFound);
-    view! { <ErrorTemplate outside_errors /> }
+    // `public/site.js` sends visitors on to one of these pages when only
+    // stray characters follow its name, e.g. `/reservation🙏` from a link
+    // shared with an emoji stuck to it. Keep in sync with the routes above.
+    view! {
+        <div data-not-found="menu reservation contact policy about gallery">
+            <ErrorTemplate outside_errors />
+        </div>
+    }
 }
 
 /// Tells search engines the one address of each page, so `/menu.html` or
