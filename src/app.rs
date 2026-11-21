@@ -13,8 +13,12 @@ use crate::elements::nav::announcement_enabled;
 use leptos::prelude::*;
 use leptos_meta::{provide_meta_context, Link, Meta, MetaTags, Title};
 use leptos_router::components::{Route, Router, Routes};
+use leptos_router::hooks::use_location;
 use leptos_router::static_routes::StaticRoute;
 use leptos_router::{path, SsrMode};
+
+/// The site's public address, used for canonical links and the sitemap.
+pub const SITE_URL: &str = "https://legopal.fr";
 
 pub fn shell() -> impl IntoView {
     view! {
@@ -72,6 +76,7 @@ pub fn App() -> impl IntoView {
 
         // content for this welcome page
         <Router>
+            <Canonical />
             <Header />
             {announcement_enabled().then(|| view! {
                 <Modal
@@ -101,4 +106,12 @@ fn NotFound() -> impl IntoView {
     let mut outside_errors = Errors::default();
     outside_errors.insert_with_default_key(AppError::NotFound);
     view! { <ErrorTemplate outside_errors /> }
+}
+
+/// Tells search engines the one address of each page, so `/menu.html` or
+/// `/index.html` aren't treated as separate pages.
+#[component]
+fn Canonical() -> impl IntoView {
+    let path = use_location().pathname.get_untracked();
+    (path != "/404").then(|| view! { <Link rel="canonical" href=format!("{SITE_URL}{path}") /> })
 }
