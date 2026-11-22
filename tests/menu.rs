@@ -49,7 +49,7 @@ mod tests {
     #[test]
     fn test_get_menu_items_from_src() {
         let items = get_menu_items();
-        assert_eq!(items.len(), 21);
+        assert_eq!(items.len(), 20);
 
         // Check that we have items from different categories
         let formules = filter_by_category(&items, &MenuCategory::Formule);
@@ -57,7 +57,7 @@ mod tests {
         let boissons = filter_by_category(&items, &MenuCategory::Boisson);
 
         assert_eq!(formules.len(), 4);
-        assert_eq!(desserts.len(), 8);
+        assert_eq!(desserts.len(), 7);
         assert_eq!(boissons.len(), 9);
     }
 
@@ -71,7 +71,7 @@ mod tests {
     #[test]
     fn test_get_desserts_from_src() {
         let desserts = get_desserts();
-        assert_eq!(desserts.len(), 8);
+        assert_eq!(desserts.len(), 7);
         assert!(desserts.iter().all(|item| item.category == MenuCategory::Dessert));
     }
 

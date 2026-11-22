@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Styling and Fonts", () => {
-  test("custom Daikon font loads correctly", async ({ page }) => {
+  test("custom Fraunces font loads correctly", async ({ page }) => {
     await page.goto("http://localhost:3000/");
     
     // Check that CSS is loaded
@@ -13,7 +13,7 @@ test.describe("Styling and Fonts", () => {
       const fontFamily = await heading.evaluate((el) => 
         getComputedStyle(el).getPropertyValue("font-family")
       );
-      expect(fontFamily).toContain("Daikon");
+      expect(fontFamily).toContain("Fraunces");
     }
   });
 

@@ -51,13 +51,14 @@ pub fn get_images() -> Vec<Image> {
 #[component]
 pub fn Gallery() -> impl IntoView {
     view! {
-        <main class="container mx-auto px-24 py-8">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <main id="contenu" class="wrap py-12 lg:py-18">
+            <h1 class="pb-10 font-serif text-5xl leading-none font-normal tracking-[-0.02em] sm:text-6xl lg:pb-14 lg:text-8xl">"Galerie"</h1>
+            <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
                 {get_images().into_iter().map(|image| {
                     view! {
                         <div
                             data-gallery-item
-                            class="relative overflow-hidden transition-all duration-700 ease-in-out cursor-pointer hover:scale-105"
+                            class="relative cursor-pointer overflow-hidden bg-kraft transition-all duration-700 ease-in-out hover:scale-105"
                         >
                             <img
                                 src=format!("/assets/img/gallery/{}", image.filename)
