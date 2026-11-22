@@ -8,140 +8,114 @@ pub fn announcement_enabled() -> bool {
         .unwrap_or(false)
 }
 
+/// `aria-current` for a link to `href`, so the current page is announced
+/// and underlined.
+fn current(path: &str, href: &str) -> Option<&'static str> {
+    (path == href).then_some("page")
+}
+
 // The mobile menu toggle is wired up by `public/site.js` through the
 // `data-menu-*` attributes.
 #[component]
 pub fn Nav() -> impl IntoView {
-    let location = use_location();
-    let is_home = move || location.pathname.get() == "/";
-    let is_menu = move || location.pathname.get() == "/menu";
-    let is_reservation = move || location.pathname.get() == "/reservation";
-    let is_contact = move || location.pathname.get() == "/contact";
+    let path = use_location().pathname.get_untracked();
+    let is_home = path == "/";
+    let desktop_link = |href: &'static str, label: &'static str| {
+        let here = current(&path, href);
+        view! {
+            <li>
+                <a
+                    href=href
+                    aria-current=here
+                    class="py-3 hover:text-piment"
+                    class=("nav-courant", here.is_some())
+                >
+                    {label}
+                </a>
+            </li>
+        }
+    };
+    let mobile_link = |href: &'static str, label: &'static str| {
+        let here = current(&path, href);
+        view! {
+            <li class="border-t border-ligne">
+                <a
+                    href=href
+                    aria-current=here
+                    class="flex items-center justify-between py-4 font-serif text-4xl hover:text-piment"
+                    class=("italic", here.is_some())
+                    class=("text-piment", here.is_some())
+                >
+                    {label}
+                    <span aria-hidden="true" class="font-sans text-2xl">"→"</span>
+                </a>
+            </li>
+        }
+    };
 
     view! {
-        <nav
-            class=("text-white", move || is_home())
-            class=("text-black", move || !is_home())
-            class="relative z-20 top-0 right-0 w-full inline-block px-10 pt-5 text-2xl bg-transparent bg-opacity-50 rounded-xl"
-        >
-            <div class="flex justify-between items-center">
-                <div>
-                    {
-                        move || match is_home() {
-                            true => view! {
-                                <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-white.svg" />
-                            }.into_any(),
-                            false => view! {
-                                <a href="/">
-                                    <img alt="Gopal Logo" class="h-20 lg:h-32" src="/assets/img/gopal-logo-black.svg" />
-                                </a>
-                            }.into_any()
-                        }
-                    }
-                </div>
-                <div class="flex">
+        <nav aria-label="Navigation principale" class="wrap">
+            <div class="flex items-center justify-between gap-6 py-3 lg:min-h-28">
+                {if is_home {
+                    view! {
+                        <img alt="Gopal Logo" class="h-16 w-auto lg:h-[5.5rem]" width="104" height="87" src="/assets/img/gopal-logo-encre.svg" />
+                    }.into_any()
+                } else {
+                    view! {
+                        <a href="/" aria-label="Accueil" class="shrink-0">
+                            <img alt="Gopal Logo" class="h-16 w-auto lg:h-[5.5rem]" width="104" height="87" src="/assets/img/gopal-logo-encre.svg" />
+                        </a>
+                    }.into_any()
+                }}
+                <div class="flex items-center gap-4 lg:gap-10">
                     <Show when=announcement_enabled>
-                        <button data-modal-open type="button" class="animate-bounce text-violet-700 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">
+                        <button
+                            data-modal-open
+                            type="button"
+                            class="btn min-h-12 bg-curcuma text-encre hover:bg-curcuma-clair lg:min-h-13"
+                        >
                             "Annonce"
                         </button>
                     </Show>
-                    <div class="hidden lg:block">
-                        <ul class="flex">
-                            <li class="px-4 py-4">
-                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_menu()) href="/menu">Menu</a>
-                            </li>
-                            <li class="px-4 py-4">
-                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_reservation()) href="/reservation">Réservation</a>
-                            </li>
-                            <li class="px-4 py-4">
-                                <a class="tracking-widest uppercase" class=("text-gray-300", move || is_contact()) href="/contact">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="block lg:hidden">
-                        <button
-                            data-menu-toggle
-                            aria-expanded="false"
-                            aria-controls="mobile-menu"
-                            class="block lg:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
-                            type="button"
-                            id="mobile-menu-button"
-                            aria-label="Mobile menu button"
-                        >
-                            <svg
-                            class="h-6 w-6 fill-current"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                    <ul class="hidden items-center gap-10 text-[1.1875rem] font-semibold uppercase tracking-[0.12em] lg:flex">
+                        {desktop_link("/menu", "Menu")}
+                        {desktop_link("/contact", "Contact")}
+                        <li>
+                            <a
+                                href="/reservation"
+                                aria-current=current(&path, "/reservation")
+                                class="btn btn-piment min-h-13 tracking-[0.12em]"
                             >
-                                <path
-                                    data-menu-icon="close"
-                                    class="hidden"
-                                    clip-rule="evenodd"
-                                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                                    fill-rule="evenodd"
-                                    fill=move || if is_home() { "white" } else { "black" }
-                                />
-                                <path
-                                    data-menu-icon="open"
-                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                                    fill-rule="evenodd"
-                                    fill=move || if is_home() { "white" } else { "black" }
-                                />
-                            </svg>
-                        </button>
-                    </div>
+                                "Réservation"
+                            </a>
+                        </li>
+                    </ul>
+                    <button
+                        data-menu-toggle
+                        aria-expanded="false"
+                        aria-controls="mobile-menu"
+                        class="flex size-12 items-center justify-center rounded-full border-[1.5px] border-encre text-encre hover:bg-encre hover:text-papier lg:hidden"
+                        type="button"
+                        id="mobile-menu-button"
+                        aria-label="Mobile menu button"
+                    >
+                        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                            <path data-menu-icon="close" class="hidden" d="M6 6l12 12M18 6L6 18" />
+                            <path data-menu-icon="open" d="M3 6h18M3 12h18M3 18h18" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div
                 id="mobile-menu"
                 data-menu
-                class="max-h-0 w-full z-50 lg:hidden flex justify-end w-auto overflow-hidden transition-all duration-400 ease-in-out"
+                class="max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out lg:hidden"
             >
-                <ul
-                    class=("bg-lime-200/65", move || is_home())
-                    class=("rounded-3xl", move || is_home())
-                    class="pt-6 pt-0 list-reset flex flex-col items-end"
-                >
-                    <li class="mr-3">
-                        <a
-                            class=("text-white", move || is_home())
-                            class=("hover:text-gray-200", move || !is_home())
-                            class="inline-block py-2 px-4 no-underline uppercase"
-                            href="/"
-                        >
-                            Accueil
-                        </a>
-                    </li>
-                    <li class="mr-3">
-                        <a
-                            class=("text-gray-200", move || is_menu())
-                            class=("text-gray-600", move || !is_menu())
-                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
-                            href="/menu"
-                        >
-                            Menu
-                        </a>
-                    </li>
-                    <li class="mr-3">
-                        <a
-                            class=("text-gray-200", move || is_reservation())
-                            class=("text-gray-600", move || !is_reservation())
-                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
-                            href="/reservation"
-                        >
-                            Réservation
-                        </a>
-                    </li>
-                        <li class="mr-3">
-                        <a
-                            class=("text-gray-200", move || is_contact())
-                            class=("text-gray-600", move || !is_contact())
-                            class="inline-block no-underline hover:text-gray-200 py-2 px-4 uppercase"
-                            href="/contact"
-                        >
-                            Contact
-                        </a>
-                    </li>
+                <ul class="mb-6 border-b border-ligne">
+                    {mobile_link("/", "Accueil")}
+                    {mobile_link("/menu", "Menu")}
+                    {mobile_link("/reservation", "Réservation")}
+                    {mobile_link("/contact", "Contact")}
                 </ul>
             </div>
         </nav>

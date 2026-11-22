@@ -41,10 +41,10 @@ pub fn ErrorTemplate(
     println!("Errors: {errors:#?}");
 
     view! {
-        <main class="container mx-auto">
-            <section class="py-10">
+        <main id="contenu" class="bg-papier">
+            <section class="wrap py-20 lg:py-28">
                 <div class="text-center">
-                    <h1 class="font-sans font-bold text-4xl pb-6 uppercase tracking-wide">{if errors.len() > 1 {"Errors"} else {"Error"}}</h1>
+                    <h1 class="pb-6 font-serif text-6xl font-normal italic text-piment lg:text-8xl">{if errors.len() > 1 {"Errors"} else {"Error"}}</h1>
                     <For
                         // a function that returns the items we're iterating over; a signal is fine
                         each= move || {errors.clone().into_iter().enumerate()}
@@ -55,8 +55,8 @@ pub fn ErrorTemplate(
                             let error_string = error.1.to_string();
                             let error_code= error.1.status_code();
                             view! {
-                                <h2 class="font-sans font-bold text-2xl pb-2">"Code: "{error_code.to_string()}</h2>
-                                <p class="font-sans font-bold text-xl pb-6">"Error: "{error_string}</p>
+                                <h2 class="pb-2 font-serif text-3xl">"Code: "{error_code.to_string()}</h2>
+                                <p class="pb-6 text-xl text-lichen">"Error: "{error_string}</p>
                             }
                         }
                     />

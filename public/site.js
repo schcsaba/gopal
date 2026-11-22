@@ -14,6 +14,25 @@ for (const button of document.querySelectorAll("[data-menu-toggle]")) {
   });
 }
 
+// Home page video: pause/play button, and stay paused for visitors who
+// prefer reduced motion
+for (const button of document.querySelectorAll("[data-video-toggle]")) {
+  const video = document.getElementById(button.getAttribute("aria-controls"));
+  const show = (playing) => {
+    button.setAttribute("aria-label", playing ? button.dataset.labelPause : button.dataset.labelPlay);
+    button.querySelector('[data-video-icon="pause"]').classList.toggle("hidden", !playing);
+    button.querySelector('[data-video-icon="play"]').classList.toggle("hidden", playing);
+  };
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.removeAttribute("autoplay");
+    video.pause();
+  }
+  video.addEventListener("play", () => show(true));
+  video.addEventListener("pause", () => show(false));
+  show(!video.paused || video.autoplay);
+  button.addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+}
+
 // Announcement modal
 const modal = document.querySelector("[data-modal]");
 if (modal) {

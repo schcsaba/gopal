@@ -94,14 +94,6 @@ pub fn get_menu_items() -> Vec<MenuItem> {
             true,
         ),
         MenuItem::new(
-            "Cupcake",
-            5.80,
-            "ex : chocolat, crème de marron, framboise...",
-            MenuCategory::Dessert,
-            false,
-            true,
-        ),
-        MenuItem::new(
             "Crumble",
             6.50,
             "pomme cannelle",

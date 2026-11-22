@@ -1,5 +1,7 @@
+use crate::data::contact::{format_opening_hours_text, get_contact_info};
+use crate::elements::header::MESSENGER;
+use crate::pages::home::MapEmbed;
 use leptos::prelude::*;
-use crate::data::contact::{get_contact_info, format_opening_hours_text};
 
 #[component]
 pub fn Contact() -> impl IntoView {
@@ -9,56 +11,59 @@ pub fn Contact() -> impl IntoView {
     let phone = contact.phone.clone();
     let email = contact.email.clone();
     let formatted_phone = contact.format_phone_for_display();
+
+    let heading = "pb-4 font-serif text-3xl leading-tight font-medium lg:text-4xl";
+    let line = "text-xl leading-relaxed";
+
     view! {
-        <main class="container mx-auto">
-            <section class="pt-20">
-                <div class="flex flex-wrap md:flex-nowrap w-full p-2">
-                    <div class="w-full lg:w-1/2 px-8 mt-12 lg:mt-0">
-                        <div class="w-full h-64 md:h-72 lg:h-full">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.13273053803!2d0.6773934768938756!3d47.4093521711725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd5dbe973d05f%3A0x4623a58782228f72!2sGopal!5e0!3m2!1sen!2sfr!4v1723976237764!5m2!1sen!2sfr"
-                                class="w-full h-full rounded-lg"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Google Map"
-                            >
-                            </iframe>
+        <main id="contenu" class="bg-papier">
+            <section class="wrap grid items-start gap-12 py-12 lg:grid-cols-2 lg:gap-18 lg:py-20">
+                <div class="lg:sticky lg:top-8">
+                    <div class="frame frame-br">
+                        <div class="relative h-80 border-[1.5px] border-encre bg-kraft md:h-[28rem] lg:h-[40rem]">
+                            <MapEmbed />
                         </div>
                     </div>
-                    <div class="flex flex-col p-2 w-full lg:w-1/2">
-                        <h2 class="font-sans font-bold text-2xl pb-4 uppercase tracking-wide">"Heures d'ouverture :"</h2>
-                        <For
-                            each=move || hours.clone()
-                            key=|hours| format!("{:?}", hours.day)
-                            children=move |hours| {
-                                let formatted = format_opening_hours_text(&hours);
-                                let is_last = matches!(hours.day, crate::data::contact::Day::Saturday);
+                </div>
+                <div class="flex flex-col gap-12">
+                    <div>
+                        <h2 class=heading>"Heures d'ouverture :"</h2>
+                        <ul class="border-t border-ligne">
+                            {hours.into_iter().map(|hours| {
+                                let evening = hours.slots.len() > 1;
                                 view! {
-                                    <p class={if is_last { "text-xl pb-6" } else { "text-xl pb-2" }}>
-                                        {formatted}
-                                    </p>
+                                    <li class="border-b border-ligne py-2.5 text-xl" class=("text-piment", evening)>
+                                        {format_opening_hours_text(&hours)}
+                                    </li>
                                 }
-                            }
-                        />
-                        <h2 class="font-sans font-bold text-2xl pb-4 uppercase tracking-wide">Coordonnées :</h2>
-                        <p class="text-xl pb-2">{address.clone()}</p>
-                        <p class="text-xl pb-2">Tél : <span class="underline decoration-1 underline-offset-2"><a href={format!("tel:{}", phone)}>{formatted_phone.clone()}</a></span></p>
-                        <p class="text-xl pb-2">Email : <span class="underline decoration-1 underline-offset-2"><a href={format!("mailto:{}", email)}>{email.clone()}</a></span></p>
-                        <p class="text-xl pb-6">Messenger : <span class="underline decoration-1 underline-offset-2"><a href="https://m.me/Legopaltours" target="_blank" rel="noreferrer">LeGopaltours</a></span></p>
-                        <p class="text-xl pb-6">"Vous pouvez effectuer un zoom avant et arrière sur la carte à l'aide des boutons situés dans le coin inférieur droit ou avec deux doigts sur les appareils à écran tactile."</p>
-                        <h2 class="font-sans font-bold text-2xl pb-4 uppercase tracking-wide">Approche par les transports publics :</h2>
-                        <p class="text-xl pb-2">"Le restaurant est à 180m de l'arrêt de tram Tranchée - Ligne A."</p>
-                        <p class="text-xl pb-2">Autres lignes urbaines avec un arrêt à proximité : 10, 14, 17, 18, C2, 51, 52, 73</p>
-                        <p class="text-xl pb-2">"Plus d'informations sur "<span class="underline decoration-1 underline-offset-2"><a href="https://www.filbleu.fr/" target="_blank" rel="noreferrer">Fil Bleu</a></span>.</p>
-                        <p class="text-xl pb-2">Vous trouverez des informations sur le parking sur <span class="underline decoration-1 underline-offset-2"><a href="https://www.tours.fr/page-portail-ma-mairie/services-pratiques/deplacement/stationnement/" target="_blank" rel="noreferrer">le site de la Ville de Tours</a></span>.</p>
-                        <p class="text-xl pb-2">Pour toute question ou réservation appelez nous au : <br /><span class="underline decoration-1 underline-offset-2"><a href={format!("tel:{}", phone)}>{formatted_phone.clone()}</a></span></p>
+                            }).collect_view()}
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class=heading>"Coordonnées :"</h2>
+                        <p class=line>{address}</p>
+                        <p class=line>"Tél : " <a class="lien" href=format!("tel:{}", phone)>{formatted_phone.clone()}</a></p>
+                        <p class=line>"Email : " <a class="lien" href=format!("mailto:{}", email)>{email.clone()}</a></p>
+                        <p class=line>"Messenger : " <a class="lien" href=MESSENGER target="_blank" rel="noreferrer">"LeGopaltours"</a></p>
+                        <p class="mt-4 border-l-[3px] border-curcuma pl-4 text-lg text-lichen">"Vous pouvez effectuer un zoom avant et arrière sur la carte à l'aide des boutons situés dans le coin inférieur droit ou avec deux doigts sur les appareils à écran tactile."</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class=heading>"Approche par les transports publics :"</h2>
+                        <p class=line>"Le restaurant est à 180m de l'arrêt de tram Tranchée - Ligne A."</p>
+                        <p class=line>"Autres lignes urbaines avec un arrêt à proximité : 10, 14, 17, 18, C2, 51, 52, 73"</p>
+                        <p class=line>"Plus d'informations sur " <a class="lien" href="https://www.filbleu.fr/" target="_blank" rel="noreferrer">"Fil Bleu"</a> "."</p>
+                        <p class=line>"Vous trouverez des informations sur le parking sur " <a class="lien" href="https://www.tours.fr/page-portail-ma-mairie/services-pratiques/deplacement/stationnement/" target="_blank" rel="noreferrer">"le site de la Ville de Tours"</a> "."</p>
+                    </div>
+                    <div class="ardoise on-ardoise px-8 py-9 sm:px-10">
+                        <p class="text-xl leading-relaxed text-craie-douce">"Pour toute question ou réservation appelez nous au : "</p>
+                        <p class="pt-2 font-serif text-4xl text-curcuma-clair lg:text-5xl">
+                            <a class="hover:text-craie" href=format!("tel:{}", phone)>{formatted_phone.clone()}</a>
+                        </p>
                     </div>
                 </div>
             </section>
-            <div class="flex w-full h-64 items-center justify-center">
-                <p class="text-5xl">À bientôt</p>
+            <div class="flex min-h-64 items-center justify-center border-t border-ligne px-5 py-16">
+                <p class="font-serif text-6xl italic lg:text-8xl">"À " <span class="text-piment">"bientôt"</span></p>
             </div>
         </main>
     }

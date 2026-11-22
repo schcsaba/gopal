@@ -1,5 +1,5 @@
 use crate::elements::footer::Footer;
-use crate::elements::header::Header;
+use crate::elements::header::{Header, MobileBar};
 use crate::elements::modal::Modal;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::pages::about::About;
@@ -45,7 +45,7 @@ pub fn App() -> impl IntoView {
 
     let content = || {
         view! {
-            <ul class="text-lg text-gray-900">
+            <ul class="text-lg text-mousse">
                 <li class="mb-2">
                     <span class="font-bold">
                         "Lundi 23 Décembre 16h à 19h et mardi 24 Décembre 11h à 14h :"
@@ -77,6 +77,9 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <Canonical />
+            <a href="#contenu" class="sr-only z-40 bg-encre px-4 py-3 text-papier focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+                "Aller au contenu"
+            </a>
             <Header />
             {announcement_enabled().then(|| view! {
                 <Modal
@@ -97,6 +100,7 @@ pub fn App() -> impl IntoView {
                 <Route path=path!("/404") view=NotFound ssr=SsrMode::Static(StaticRoute::new()) />
             </Routes>
             <Footer />
+            <MobileBar />
         </Router>
     }
 }
