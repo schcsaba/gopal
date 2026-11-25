@@ -50,6 +50,28 @@ if (modal) {
   });
 }
 
+// Christmas menu poster: show it full size over the page instead of leaving
+// it for the bare image. The native dialog handles Escape and keeps focus
+// inside; a click anywhere but the poster closes it too.
+const lightbox = document.querySelector("[data-lightbox]");
+if (lightbox) {
+  for (const link of document.querySelectorAll("[data-lightbox-open]")) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      lightbox.showModal();
+      document.documentElement.style.overflow = "hidden";
+    });
+  }
+  lightbox.addEventListener("click", (event) => {
+    if (event.target.closest("[data-lightbox-close]") || !event.target.closest("img")) {
+      lightbox.close();
+    }
+  });
+  lightbox.addEventListener("close", () => {
+    document.documentElement.style.overflow = "";
+  });
+}
+
 // Gallery: click an image to expand it to full width, again to shrink it back
 const galleryItems = document.querySelectorAll("[data-gallery-item]");
 for (const item of galleryItems) {
