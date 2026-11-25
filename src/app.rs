@@ -7,6 +7,7 @@ use crate::pages::contact::Contact;
 use crate::pages::gallery::Gallery;
 use crate::pages::home::Home;
 use crate::pages::menu::Menu;
+use crate::pages::noel::Noel;
 use crate::pages::policy::Policy;
 use crate::pages::reservation::Reservation;
 use crate::elements::nav::announcement_enabled;
@@ -91,6 +92,7 @@ pub fn App() -> impl IntoView {
             <Routes fallback=NotFound>
                 <Route path=path!("/") view=Home ssr=SsrMode::Static(StaticRoute::new()) />
                 <Route path=path!("/menu") view=Menu ssr=SsrMode::Static(StaticRoute::new()) />
+                <Route path=path!("/noel") view=Noel ssr=SsrMode::Static(StaticRoute::new()) />
                 <Route path=path!("/reservation") view=Reservation ssr=SsrMode::Static(StaticRoute::new()) />
                 <Route path=path!("/contact") view=Contact ssr=SsrMode::Static(StaticRoute::new()) />
                 <Route path=path!("/policy") view=Policy ssr=SsrMode::Static(StaticRoute::new()) />
@@ -113,7 +115,7 @@ fn NotFound() -> impl IntoView {
     // stray characters follow its name, e.g. `/reservation🙏` from a link
     // shared with an emoji stuck to it. Keep in sync with the routes above.
     view! {
-        <div data-not-found="menu reservation contact policy about gallery">
+        <div data-not-found="menu noel reservation contact policy about gallery">
             <ErrorTemplate outside_errors />
         </div>
     }
