@@ -1,5 +1,5 @@
 use crate::data::contact::get_contact_info;
-use crate::data::noel::{ORDER_DEADLINE, PHONE, PHONE_DISPLAY, PRICE, SHOP_URL};
+use crate::data::noel::{ORDER_DEADLINE, PHONE, PHONE_DISPLAY, SHOP_URL};
 use crate::elements::nav::Nav;
 use leptos::prelude::*;
 use leptos_router::hooks::use_location;
@@ -39,7 +39,7 @@ pub fn Header() -> impl IntoView {
     }
 }
 
-/// The Christmas menu, announced on every page but its own. Seasonal: remove
+/// The Christmas menu and bûches, announced on every page but their own. Seasonal: remove
 /// it with `pages/noel.rs` once the season is over.
 #[component]
 fn NoelBanner() -> impl IntoView {
@@ -49,8 +49,8 @@ fn NoelBanner() -> impl IntoView {
             <span class="wrap flex min-h-12 flex-wrap items-center justify-center gap-x-3 py-2 text-center text-[1.0625rem] lg:text-lg">
                 <span aria-hidden="true" class="text-curcuma-clair">"✦"</span>
                 <span>
-                    <strong class="font-serif text-xl font-medium italic lg:text-[1.375rem]">"Menu de Noël à emporter"</strong>
-                    <span class="hidden sm:inline">{format!(" · {PRICE} · commandes jusqu’au {ORDER_DEADLINE}")}</span>
+                    <strong class="font-serif text-xl font-medium italic lg:text-[1.375rem]">"Menu & bûches de Noël à emporter"</strong>
+                    <span class="hidden sm:inline">{format!(" · commandes jusqu’au {ORDER_DEADLINE}")}</span>
                 </span>
                 <span class="font-semibold underline decoration-curcuma-clair decoration-2 underline-offset-4 group-hover:text-curcuma-clair">
                     "Découvrir" <span aria-hidden="true">"→"</span>
