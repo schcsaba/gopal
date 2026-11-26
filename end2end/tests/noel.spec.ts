@@ -23,14 +23,22 @@ test.describe("Noël à emporter", () => {
     await page.goto("http://localhost:3000/noel");
     const buches = page.locator("#buches");
     for (const name of ["Bûche Ferrero", "Bûche Tropicale"]) {
-      await expect(buches.getByText(name)).toBeVisible();
+      await expect(buches.locator("article", { hasText: name })).toHaveCount(1);
     }
     await expect(buches.getByText("38 €")).toHaveCount(2);
     await expect(buches.locator("article").getByText("(végane)")).toHaveCount(2);
     await expect(buches.getByText(/version sans gluten/)).toBeVisible();
     await expect(buches.getByRole("link", { name: /Commander une bûche/ })).toHaveAttribute(
       "href",
-      "https://gopal.sumupstore.com/",
+      /gopal\.sumupstore\.com\/produits\?category=/,
+    );
+    await expect(buches.getByRole("link", { name: "Commander la Bûche Ferrero" })).toHaveAttribute(
+      "href",
+      "https://gopal.sumupstore.com/product/buche-ferrero",
+    );
+    await expect(buches.getByRole("link", { name: "Commander la Bûche Tropicale" })).toHaveAttribute(
+      "href",
+      "https://gopal.sumupstore.com/product/buche-tropicale",
     );
   });
 

@@ -201,6 +201,9 @@ fn BucheCard(buche: Buche) -> impl IntoView {
                 <span class="text-piment">{BUCHE_PRICE}</span>
             </p>
             <p class="text-xl leading-relaxed text-mousse lg:text-[1.3125rem]">{buche.description}</p>
+            <a class="lien mt-auto self-start pt-2 text-lg font-semibold" href=buche.url>
+                "Commander" <span class="sr-only">{format!(" la {}", buche.name)}</span> <span aria-hidden="true">" →"</span>
+            </a>
         </article>
     }
 }
