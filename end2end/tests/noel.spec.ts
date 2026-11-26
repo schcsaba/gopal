@@ -26,6 +26,8 @@ test.describe("Noël à emporter", () => {
       await expect(buches.getByText(name)).toBeVisible();
     }
     await expect(buches.getByText("38 €")).toHaveCount(2);
+    await expect(buches.getByText("(végane)")).toHaveCount(2);
+    await expect(buches.getByText(/version sans gluten/)).toBeVisible();
     await expect(buches.getByRole("link", { name: /Commander une bûche/ })).toHaveAttribute(
       "href",
       "https://gopal.sumupstore.com/",

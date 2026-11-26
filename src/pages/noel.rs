@@ -147,6 +147,10 @@ pub fn Noel() -> impl IntoView {
                             "Taille " {BUCHE_SIZE} " · à commander avant le " {ORDER_DEADLINE}
                         </p>
                     </div>
+                    <p class="-mt-4 flex items-center gap-3 text-lg text-mousse lg:-mt-6">
+                        <span aria-hidden="true"><Vegan /></span>
+                        "Nos deux bûches sont véganes et existent aussi en version sans gluten."
+                    </p>
                     <ul class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                         {get_buches().into_iter().map(|buche| view! { <li><BucheCard buche /></li> }).collect_view()}
                     </ul>
@@ -192,12 +196,10 @@ pub fn Noel() -> impl IntoView {
 fn BucheCard(buche: Buche) -> impl IntoView {
     view! {
         <article class="flex h-full flex-col gap-4 border-[1.5px] border-encre bg-papier px-5 py-7 sm:px-9 sm:py-9">
-            <MenuLine
-                name=buche.name.to_string()
-                price=BUCHE_PRICE.to_string()
-                class="font-serif text-2xl leading-tight sm:text-3xl lg:text-[2.375rem]"
-                price_class="text-piment"
-            />
+            <p class="leader font-serif text-[1.375rem] leading-tight sm:text-3xl lg:text-[2.375rem]">
+                <span>{buche.name} {buche.is_vegan.then(|| view! { " " <Vegan /> })}</span>
+                <span class="text-piment">{BUCHE_PRICE}</span>
+            </p>
             <p class="text-xl leading-relaxed text-mousse lg:text-[1.3125rem]">{buche.description}</p>
         </article>
     }

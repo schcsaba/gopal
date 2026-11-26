@@ -94,6 +94,7 @@ pub fn get_noel_courses() -> [Course; 4] {
 pub struct Buche {
     pub name: &'static str,
     pub description: &'static str,
+    pub is_vegan: bool,
 }
 
 pub fn get_buches() -> [Buche; 2] {
@@ -101,10 +102,12 @@ pub fn get_buches() -> [Buche; 2] {
         Buche {
             name: "Bûche Ferrero",
             description: "Un brownie au chocolat, un croustillant au praliné, un insert crémeux au praliné et une délicieuse mousse au chocolat.",
+            is_vegan: true,
         },
         Buche {
             name: "Bûche Tropicale",
             description: "Un biscuit moelleux à la coco, un insert crémeux à la mangue et une mousse à la coco et vanille.",
+            is_vegan: true,
         },
     ]
 }
