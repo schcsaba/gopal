@@ -50,24 +50,26 @@ if (modal) {
   });
 }
 
-// Christmas menu poster: show it full size over the page instead of leaving
-// it for the bare image. The native dialog handles Escape and keeps focus
-// inside; a click anywhere but the poster closes it too.
-const lightbox = document.querySelector("[data-lightbox]");
-if (lightbox) {
-  for (const link of document.querySelectorAll("[data-lightbox-open]")) {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      lightbox.showModal();
-      document.documentElement.style.overflow = "hidden";
-    });
-  }
-  lightbox.addEventListener("click", (event) => {
+// Christmas posters: show one full size over the page instead of leaving it
+// for the bare image. Each link names its viewer in `aria-controls`. The
+// native dialog handles Escape and keeps focus inside; a click anywhere but
+// the poster closes it too.
+for (const link of document.querySelectorAll("[data-lightbox-open]")) {
+  const viewer = document.getElementById(link.getAttribute("aria-controls"));
+  if (!viewer) continue;
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    viewer.showModal();
+    document.documentElement.style.overflow = "hidden";
+  });
+}
+for (const viewer of document.querySelectorAll("[data-lightbox]")) {
+  viewer.addEventListener("click", (event) => {
     if (event.target.closest("[data-lightbox-close]") || !event.target.closest("img")) {
-      lightbox.close();
+      viewer.close();
     }
   });
-  lightbox.addEventListener("close", () => {
+  viewer.addEventListener("close", () => {
     document.documentElement.style.overflow = "";
   });
 }
