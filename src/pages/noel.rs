@@ -1,5 +1,5 @@
 use crate::data::noel::{
-    get_buches, get_noel_courses, Buche, Dish, BUCHES_URL, BUCHE_PRICE, BUCHE_SIZE,
+    get_buches, get_noel_courses, Buche, Dish, BUCHES_URL, BUCHE_FROM_PRICE, BUCHE_SIZES,
     ORDER_DEADLINE, PHONE, PHONE_DISPLAY, PICKUP, PRICE, SHOP_URL,
 };
 use crate::pages::menu::{MenuLine, Swash};
@@ -39,7 +39,7 @@ pub fn Noel() -> impl IntoView {
                             <div class=fact>
                                 <dt class=fact_label>"Bûche de Noël"</dt>
                                 <dd>
-                                    <span class=price>{BUCHE_PRICE}</span>
+                                    <span class=price>"dès " {BUCHE_FROM_PRICE}</span>
                                     <a class=see href="#buches">"Voir les bûches"</a>
                                 </dd>
                             </div>
@@ -144,12 +144,12 @@ pub fn Noel() -> impl IntoView {
                             "Nos " <em class="text-piment">"bûches"</em> " de Noël"
                         </h2>
                         <p class="text-xl text-mousse lg:text-[1.375rem]">
-                            "Taille " {BUCHE_SIZE} " · à commander avant le " {ORDER_DEADLINE}
+                            "En deux tailles · à commander avant le " {ORDER_DEADLINE}
                         </p>
                     </div>
                     <p class="-mt-4 flex items-center gap-3 text-lg text-mousse lg:-mt-6">
                         <span aria-hidden="true"><Vegan /></span>
-                        "Nos deux bûches sont véganes et existent aussi en version sans gluten."
+                        "Nos deux bûches sont véganes et existent aussi en version sans gluten, au même prix."
                     </p>
                     <ul class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                         {get_buches().into_iter().map(|buche| view! { <li><BucheCard buche /></li> }).collect_view()}
@@ -196,11 +196,22 @@ pub fn Noel() -> impl IntoView {
 fn BucheCard(buche: Buche) -> impl IntoView {
     view! {
         <article class="flex h-full flex-col gap-4 border-[1.5px] border-encre bg-papier px-5 py-7 sm:px-9 sm:py-9">
-            <p class="leader font-serif text-[1.375rem] leading-tight sm:text-3xl lg:text-[2.375rem]">
-                <span>{buche.name} {buche.is_vegan.then(|| view! { " " <Vegan /> })}</span>
-                <span class="text-piment">{BUCHE_PRICE}</span>
-            </p>
+            <h3 class="font-serif text-[1.625rem] leading-tight font-normal sm:text-3xl lg:text-[2.375rem]">
+                {buche.name} {buche.is_vegan.then(|| view! { " " <Vegan /> })}
+            </h3>
             <p class="text-xl leading-relaxed text-mousse lg:text-[1.3125rem]">{buche.description}</p>
+            <ul class="flex flex-col gap-1.5 border-t border-ligne pt-4">
+                {BUCHE_SIZES.into_iter().map(|(size, price)| view! {
+                    <li>
+                        <MenuLine
+                            name=size.to_string()
+                            price=price.to_string()
+                            class="font-serif text-xl lg:text-2xl"
+                            price_class="text-piment"
+                        />
+                    </li>
+                }).collect_view()}
+            </ul>
             <a class="lien mt-auto self-start pt-2 text-lg font-semibold" href=buche.url>
                 "Commander" <span class="sr-only">{format!(" la {}", buche.name)}</span> <span aria-hidden="true">" →"</span>
             </a>

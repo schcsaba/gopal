@@ -25,7 +25,10 @@ test.describe("Noël à emporter", () => {
     for (const name of ["Bûche Ferrero", "Bûche Tropicale"]) {
       await expect(buches.locator("article", { hasText: name })).toHaveCount(1);
     }
-    await expect(buches.getByText("38 €")).toHaveCount(2);
+    for (const price of ["38 €", "58 €"]) {
+      await expect(buches.getByText(price, { exact: true })).toHaveCount(2);
+    }
+    await expect(buches.getByText("8/10 personnes", { exact: true })).toHaveCount(2);
     await expect(buches.locator("article").getByText("(végane)")).toHaveCount(2);
     await expect(buches.getByText(/version sans gluten/)).toBeVisible();
     await expect(buches.getByRole("link", { name: /Commander une bûche/ })).toHaveAttribute(

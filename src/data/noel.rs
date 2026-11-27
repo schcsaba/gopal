@@ -7,8 +7,10 @@ pub const SHOP_URL: &str = "https://gopal.sumupstore.com/";
 pub const BUCHES_URL: &str =
     "https://gopal.sumupstore.com/produits?category=6d7bf43d-09cf-4adc-b5ed-461ace9602ec";
 pub const PRICE: &str = "48 €";
-pub const BUCHE_PRICE: &str = "38 €";
-pub const BUCHE_SIZE: &str = "25 cm, pour 5 à 6 parts";
+/// Each bûche comes in two sizes; the gluten-free version costs the same.
+pub const BUCHE_SIZES: [(&str, &str); 2] = [("4/5 personnes", "38 €"), ("8/10 personnes", "58 €")];
+/// The smaller size's price, for "dès …".
+pub const BUCHE_FROM_PRICE: &str = BUCHE_SIZES[0].1;
 pub const ORDER_DEADLINE: &str = "16 décembre";
 pub const PICKUP: &str = "jeudi 24 décembre, de 11h00 à 16h30";
 /// The number given on the poster and the shop for Christmas orders.
